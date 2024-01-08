@@ -17,11 +17,10 @@ export default {
         },
     },
     corePlugins: {
-        aspectRatio: false,
     },
     plugins: [
-        forms,
-        require('@tailwindcss/aspect-ratio'),
+        // forms,
+        // require('@tailwindcss/aspect-ratio'),
 
     ],
 };
