@@ -80,7 +80,7 @@ switch ($width) {
                                                             <p class="text-gray-500">Qty 1</p>
 
                                                             <div class="flex">
-                                                                <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
+                                                                <button type="button" class="font-medium text-green-600 hover:text-green-500">Remove</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -104,7 +104,7 @@ switch ($width) {
                                                             <p class="text-gray-500">Qty 1</p>
 
                                                             <div class="flex">
-                                                                <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500">Remove</button>
+                                                                <button type="button" class="font-medium text-green-600 hover:text-green-500">Remove</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -123,12 +123,12 @@ switch ($width) {
                                     </div>
                                     <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                                     <div class="mt-6">
-                                        <a href="#" class="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700">Checkout</a>
+                                        <a href="#" class="flex items-center justify-center rounded-md border border-transparent bg-green-700 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-green-800">Checkout</a>
                                     </div>
                                     <div class="mt-6 flex justify-center text-center text-sm text-gray-500">
                                         <p>
                                             or
-                                            <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500">
+                                            <button type="button" class="font-medium text-green-600 hover:text-green-500">
                                                 Continue Shopping
                                                 <span aria-hidden="true"> &rarr;</span>
                                             </button>
