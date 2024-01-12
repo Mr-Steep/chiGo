@@ -49,3 +49,9 @@
         </div>
     </form>
 </x-guest-layout>
+
+@if(session('notice'))
+    <div class="alert alert-warning">
+        {{ session('notice') }}
+    </div>
+@endif

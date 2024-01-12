@@ -43,6 +43,16 @@ class ProductSeeder extends Seeder
 
 
             ],
+            [
+                'name'=>"Medium Stuff Satchel",
+                'image'=>"https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
+                'price'=>32
+            ],
+            [
+                'name'=>"Throwback Hip Bag",
+                'image'=>"https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg",
+                'price'=>90
+            ],
 
         ];
 

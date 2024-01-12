@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LanguageController;
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::resource('products', ProductController::class);
 
 Route::get('/', function () {
     $products = \App\Models\Product::get();
@@ -31,10 +33,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::post('/change-language', [LanguageController::class,'changeLanguage'])->name('change.language');
 
-Route::resource('products', ProductController::class);
+
+// Маршруты для корзины
+Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/add/{product}', [CartController::class, 'addToCart'])->name('cart.add');
+Route::delete('/cart/remove/{cart}', [CartController::class, 'removeFromCart'])->name('cart.remove');
 
 require __DIR__.'/auth.php';
 
-Route::post('/change-language', [LanguageController::class,'changeLanguage'])->name('change.language');
 
