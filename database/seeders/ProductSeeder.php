@@ -16,52 +16,50 @@ class ProductSeeder extends Seeder
     {
         $temp = [
             [
-                'name'=>"Earthen Bottle",
-                'image'=>"https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
-                'price'=>48
-
-
+                'name'        => "Earthen Bottle",
+                'image'       => "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
+                'price'       => 48,
+                'category_id' => 5
             ],
             [
-                'name'=>"Nomad Tumbler",
-                'image'=>"https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg",
-                'price'=>35
-
-
+                'name'        => "Nomad Tumbler",
+                'image'       => "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-02.jpg",
+                'price'       => 35,
+                'category_id' => 4
             ],
             [
-                'name'=>"Focus Paper Refill",
-                'image'=>"https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg",
-                'price'=>89
-
-
+                'name'        => "Focus Paper Refill",
+                'image'       => "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-03.jpg",
+                'price'       => 89,
+                'category_id' => 5
             ],
             [
-                'name'=>"Machined Mechanical Pencil",
-                'image'=>"https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg",
-                'price'=>28
-
-
+                'name'        => "Machined Mechanical Pencil",
+                'image'       => "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-04.jpg",
+                'price'       => 28,
+                'category_id' => 4
             ],
             [
-                'name'=>"Medium Stuff Satchel",
-                'image'=>"https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
-                'price'=>32
+                'name'        => "Medium Stuff Satchel",
+                'image'       => "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
+                'price'       => 32,
+                'category_id' => 5
             ],
             [
-                'name'=>"Throwback Hip Bag",
-                'image'=>"https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg",
-                'price'=>90
+                'name'        => "Throwback Hip Bag",
+                'image'       => "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg",
+                'price'       => 90,
+                'category_id' => 4
             ],
-
         ];
 
 
         array_filter($temp, function ($item){
             DB::table('products')->insert([
-                'name'  => $item['name'],
-                'image' => $item['image'],
-                'price' => $item['price'],
+                'name'        => $item['name'],
+                'image'       => $item['image'],
+                'price'       => $item['price'],
+                'category_id' => $item['category_id']
             ]);
         });
     }
