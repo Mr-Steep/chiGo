@@ -10,11 +10,12 @@ use Livewire\WithPagination;
 class Catalog extends Component
 {
     use WithPagination;
-    protected $listeners = ['updateRangePrice' => 'rangePrice'];
+    protected $listeners = ['updateRangePrice' => 'setRangePrice'];
 
     public $search;
-    public $sortField;
+    public $sortBy;
     public $minPrice ;
+    public $categoryId;
     public $maxPrice;
     public $sortDirection = 'asc';
     private int|float $minSlider = 0;
@@ -26,7 +27,7 @@ class Catalog extends Component
         $this->maxPrice = $query->max('price');
     }
 
-    function rangePrice($minPrice ,$maxPrice){
+    function setRangePrice($minPrice ,$maxPrice){
 
         $this->minPrice  = $minPrice;
         $this->maxPrice  = $maxPrice;
@@ -34,6 +35,18 @@ class Catalog extends Component
         $this->maxSlider = $this->calculatePercentage($maxPrice);
         $this->render();
 
+    }
+
+    public function setCategory($categoryId)
+    {
+        $this->categoryId = $categoryId;
+        $this->render();
+    }
+
+    public function setSort($sort)
+    {
+        $this->sortBy = $sort;
+        $this->render();
     }
 
     public function render()
@@ -47,10 +60,28 @@ class Catalog extends Component
             $query->where('name', 'like', '%' . $this->search . '%');
         }
 
-        // Apply sorting
-        if ($this->sortField) {
-            $query->orderBy($this->sortField, $this->sortDirection);
+        if ($this->categoryId) {
+            $descendantIds = Category::descendantsAndSelf($this->categoryId)->pluck('id')->toArray();
+            $query->whereHas('category', function ($query) use ($descendantIds) {
+                $query->whereIn('id', $descendantIds);
+            });
+
         }
+
+        if ($this->sortBy) {
+            if ($this->sortBy == 'popularity') {
+                $query->orderBy('popularity', $this->sortDirection);
+            } elseif ($this->sortBy == 'average_rating') {
+                $query->orderBy('average_rating', $this->sortDirection);
+            } elseif ($this->sortBy == 'newness') {
+                $query->orderBy('created_at', $this->sortDirection);
+            } elseif ($this->sortBy == 'price_low_high') {
+                $query->orderBy('price', 'asc');
+            } elseif ($this->sortBy == 'price_high_low') {
+                $query->orderBy('price', 'desc');
+            }
+        }
+
 
         if($this->minPrice){
             $query->where('price', '>=', $this->minPrice);

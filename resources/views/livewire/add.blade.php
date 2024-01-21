@@ -28,7 +28,7 @@
                             data-columns="4" style="opacity: 1; transition: opacity 0.25s ease-in-out 0s;"><a href="#"
                                                                                                               class="woocommerce-product-gallery__trigger">🔍</a>
 
-                            <div class="woocommerce-product-gallery__wrapper" style="height: 737.75px;">
+                            <div class="woocommerce-product-gallery__wrapper" style="height: auto">
                                 <div
                                     data-thumb="https://savoy.nordicmade.com/wp-content/uploads/2015/08/product-emil-backpack-100x100.jpg"
                                     data-thumb-alt=""
