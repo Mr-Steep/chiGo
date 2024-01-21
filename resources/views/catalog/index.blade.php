@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <div id="nm-shop mt-10 pt-10"
+    <div id="nm-shop"
          class="nm-shop header-enabled ajax-enabled nm-shop-sidebar-default nm-shop-sidebar-position-left images-lazyload images-show"
          style="min-height: 714.664px;">
 

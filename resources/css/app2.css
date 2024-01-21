@@ -9972,27 +9972,6 @@ body:not(.mobile-menu-open) .cart-collaterals>h2 {
     color: inherit
 }
 
-#nm-coupon-btn:before {
-    position: relative;
-    top: 2px;
-    font-family: 'nm-font';
-    font-size: 16px;
-    line-height: 1;
-    margin-right: 8px;
-    content: "\f145"
-}
-
-#nm-coupon-btn:after {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 1000;
-    font-family: 'nm-font';
-    font-size: 20px;
-    line-height: 1;
-    display: block;
-    content: "\f107"
-}
 
 .cart-collaterals .nm-coupon {
     display: none
@@ -10106,25 +10085,6 @@ body:not(.mobile-menu-open) .cart-collaterals>h2 {
     display: block;
     color: inherit;
     padding: 8px 0 6px
-}
-
-.cart-collaterals .shipping-calculator-button:before {
-    position: relative;
-    top: 1px;
-    font-family: 'nm-font';
-    font-size: 16px;
-    line-height: 1;
-    margin-right: 8px;
-    content: "\f041"
-}
-
-.cart-collaterals .shipping-calculator-button:after {
-    position: relative;
-    top: 2px;
-    font-family: 'nm-font';
-    line-height: 1;
-    content: "\f107";
-    margin-left: 4px
 }
 
 .cart-collaterals .shipping-calculator-form>p {
@@ -20239,9 +20199,6 @@ div.wpcf7 .placeheld {
     width: 100%
 }
 
-.nm-banner-slider .nm-banner-text-inner.nm-animated {
-    opacity: 0
-}
 
 .nm-banner-subtitle {
     display: block;

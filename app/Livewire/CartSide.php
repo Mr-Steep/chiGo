@@ -5,7 +5,7 @@ namespace App\Livewire;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
-class Cart extends Component
+class CartSide extends Component
 {
     protected $listeners = ['quantityUpdatedСard' => 'updateQuantityСard'];
 
@@ -17,18 +17,14 @@ class Cart extends Component
     public $discount;
     public $totalCost;
     public $totalQuantity;
-    public $totalQuantityProducts;
 
-    private bool $side;
-
-    public function mount($side = true){
-
-        $this->side = $side;
+    public function mount(){
+        $this->sessionValue = session('mySessionKey', 0);
 
         $this->cartProducts = Auth::check() ? Auth::user()->cart : [];
 
         $this->costProducts  = 0;
-        $this->costDelivery  = 20;
+        $this->costDelivery  = 0;
         $this->discount      = 0;
         $this->totalQuantity = 0;
 
@@ -37,9 +33,7 @@ class Cart extends Component
             $this->costProducts  += $cartProduct->cost;
             $this->totalQuantity += $cartProduct->quantity;
         }
-        $this->totalQuantityProducts = $this->costDelivery + $this->costProducts;
-
-        $this->totalCost             = $this->costProducts - $this->discount;
+        $this->totalCost = $this->costDelivery + $this->costProducts - $this->discount;
     }
 
     public function updateQuantityСard()
@@ -95,7 +89,6 @@ class Cart extends Component
 
     public function render()
     {
-        $view = $this->side?"livewire.cart":'livewire.cart-side';
-        return view($view);
+        return view('livewire.cart-side');
     }
 }

@@ -37,7 +37,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
 //        return view('components.products.show', compact('product'));
-        return view('components.products.show_new', compact('product'));
+        return view('components.products.show', compact('product'));
     }
 
     /**

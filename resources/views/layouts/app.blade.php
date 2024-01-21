@@ -1,8 +1,7 @@
-
-
-
 <html lang="en-US"
       class="footer-sticky-1 js no-touch history cssanimations csstransforms csstransforms3d csstransitions has-hover">
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -21,23 +20,22 @@
     </style>
 
 
-
-{{--    <script src="https://savoy.nordicmade.com/wp-includes/js/zxcvbn.min.js" type="text/javascript" async=""></script>--}}
+    {{--    <script src="https://savoy.nordicmade.com/wp-includes/js/zxcvbn.min.js" type="text/javascript" async=""></script>--}}
     <script type="text/javascript" src="https://savoy.nordicmade.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.0"
             id="jquery-core-js"></script>
 
-{{--    <script type="text/javascript"--}}
-{{--            src="https://savoy.nordicmade.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1"--}}
-{{--            id="jquery-migrate-js"></script>--}}
+    {{--    <script type="text/javascript"--}}
+    {{--            src="https://savoy.nordicmade.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1"--}}
+    {{--            id="jquery-migrate-js"></script>--}}
 
 
-{{--    <link rel="https://api.w.org/" href="https://savoy.nordicmade.com/wp-json/">--}}
-{{--    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://savoy.nordicmade.com/xmlrpc.php?rsd">--}}
+    {{--    <link rel="https://api.w.org/" href="https://savoy.nordicmade.com/wp-json/">--}}
+    {{--    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://savoy.nordicmade.com/xmlrpc.php?rsd">--}}
 
-{{--    <link rel="preload" as="font" href="https://savoy.nordicmade.com/wp-content/fonts/MaisonNeueWEB-Book.woff2"--}}
-{{--          crossorigin="">--}}
-{{--    <link rel="preload" as="font" href="https://savoy.nordicmade.com/wp-content/fonts/MaisonNeueWEB-Book.woff"--}}
-{{--          crossorigin="">--}}
+    {{--    <link rel="preload" as="font" href="https://savoy.nordicmade.com/wp-content/fonts/MaisonNeueWEB-Book.woff2"--}}
+    {{--          crossorigin="">--}}
+    {{--    <link rel="preload" as="font" href="https://savoy.nordicmade.com/wp-content/fonts/MaisonNeueWEB-Book.woff"--}}
+    {{--          crossorigin="">--}}
 
     <meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress.">
     <link rel="icon" href="https://savoy.nordicmade.com/wp-content/uploads/2015/10/favicon.png" sizes="32x32">
@@ -68,16 +66,91 @@
 
 </head>
 
+<body
+    class="page-template-default page page-id-8 theme-savoy woocommerce-cart woocommerce-page woocommerce-js nm-page-load-transition-0 header-fixed header-mobile-default header-border-1 widget-panel-dark wpb-js-composer js-comp-ver-7.1 vc_responsive">
 
-@include('layouts.navigation')
+<div class="nm-page-overflow">
+    <div class="nm-page-wrap">
+        <div class="nm-page-wrap-inner">
+            <div id="nm-header-placeholder" class="nm-header-placeholder"></div>
+
+            @include('layouts.navigation')
 
 
-<body data-rsssl="1"
-      class="home archive post-type-archive post-type-archive-product theme-savoy woocommerce-shop woocommerce woocommerce-page woocommerce-js preview-header-icons preview-shop-fullscreen nm-page-load-transition-0 header-fixed header-mobile-default header-transparency header-transparency-dark header-border-0 widget-panel-dark wpb-js-composer js-comp-ver-7.1 vc_responsive wishlist-show-buttons"
-      style="">
+            {{$slot}}
+        </div>
 
-{{$slot}}
+    </div>
 
+        <footer id="nm-footer" class="nm-footer">
+
+            <div class="nm-footer-bar layout-default">
+                <div class="nm-footer-bar-inner">
+                    <div class="nm-row">
+                        <div class="nm-footer-bar-left col-md-8 col-xs-12">
+
+
+                            <ul id="nm-footer-bar-menu" class="menu">
+                                <li id="menu-item-386" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-386"><a href="https://savoy.nordicmade.com/about/">About Us</a></li>
+                                <li id="menu-item-388" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-388"><a href="https://savoy.nordicmade.com/blog/">Blog</a></li>
+                                <li id="menu-item-384" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-384"><a href="https://savoy.nordicmade.com/faq/">FAQs</a></li>
+                                <li id="menu-item-387" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-387"><a href="https://savoy.nordicmade.com/order-tracking/">Order Tracking</a></li>
+                                <li id="menu-item-385" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-385"><a href="https://savoy.nordicmade.com/contact/">Contact</a></li>
+                                <li class="nm-menu-item-copyright menu-item"><span>© By <a href="https://1.envato.market/xaNrR">NordicMade</a></span></li>
+                            </ul>
+
+                        </div>
+
+
+                        <div class="nm-footer-bar-right col-md-4 col-xs-12">
+
+                            <ul class="nm-footer-bar-social">
+                                <li><a href="https://www.facebook.com" target="_blank" title="Facebook"
+                                       rel="nofollow">
+                                         <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" fill="gray"></path>
+                                    <path d="M18 5C17.4477 5 17 5.44772 17 6C17 6.55228 17.4477 7 18 7C18.5523 7 19 6.55228 19 6C19 5.44772 18.5523 5 18 5Z" fill="gray"></path>
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.65396 4.27606C1 5.55953 1 7.23969 1 10.6V13.4C1 16.7603 1 18.4405 1.65396 19.7239C2.2292 20.8529 3.14708 21.7708 4.27606 22.346C5.55953 23 7.23969 23 10.6 23H13.4C16.7603 23 18.4405 23 19.7239 22.346C20.8529 21.7708 21.7708 20.8529 22.346 19.7239C23 18.4405 23 16.7603 23 13.4V10.6C23 7.23969 23 5.55953 22.346 4.27606C21.7708 3.14708 20.8529 2.2292 19.7239 1.65396C18.4405 1 16.7603 1 13.4 1H10.6C7.23969 1 5.55953 1 4.27606 1.65396C3.14708 2.2292 2.2292 3.14708 1.65396 4.27606ZM13.4 3H10.6C8.88684 3 7.72225 3.00156 6.82208 3.0751C5.94524 3.14674 5.49684 3.27659 5.18404 3.43597C4.43139 3.81947 3.81947 4.43139 3.43597 5.18404C3.27659 5.49684 3.14674 5.94524 3.0751 6.82208C3.00156 7.72225 3 8.88684 3 10.6V13.4C3 15.1132 3.00156 16.2777 3.0751 17.1779C3.14674 18.0548 3.27659 18.5032 3.43597 18.816C3.81947 19.5686 4.43139 20.1805 5.18404 20.564C5.49684 20.7234 5.94524 20.8533 6.82208 20.9249C7.72225 20.9984 8.88684 21 10.6 21H13.4C15.1132 21 16.2777 20.9984 17.1779 20.9249C18.0548 20.8533 18.5032 20.7234 18.816 20.564C19.5686 20.1805 20.1805 19.5686 20.564 18.816C20.7234 18.5032 20.8533 18.0548 20.9249 17.1779C20.9984 16.2777 21 15.1132 21 13.4V10.6C21 8.88684 20.9984 7.72225 20.9249 6.82208C20.8533 5.94524 20.7234 5.49684 20.564 5.18404C20.1805 4.43139 19.5686 3.81947 18.816 3.43597C18.5032 3.27659 18.0548 3.14674 17.1779 3.0751C16.2777 3.00156 15.1132 3 13.4 3Z" fill="gray"></path>
+                                </svg>
+                                    </a>
+                                </li>
+                                <li><a href="https://www.instagram.com" target="_blank" title="Instagram"
+                                       rel="nofollow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="w-5 h-5" viewBox="-5 0 20 20" version="1.1">
+                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <g transform="translate(-385.000000, -7399.000000)" fill="gray">
+                                            <g id="icons" transform="translate(56.000000, 160.000000)">
+                                                <path d="M335.821282,7259 L335.821282,7250 L338.553693,7250 L339,7246 L335.821282,7246 L335.821282,7244.052 C335.821282,7243.022 335.847593,7242 337.286884,7242 L338.744689,7242 L338.744689,7239.14 C338.744689,7239.097 337.492497,7239 336.225687,7239 C333.580004,7239 331.923407,7240.657 331.923407,7243.7 L331.923407,7246 L329,7246 L329,7250 L331.923407,7250 L331.923407,7259 L335.821282,7259 Z" id="facebook-[#176]">
+
+                                                </path>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                                    </a>
+                                </li>
+                                <li><a href="https://www.twitter.com" target="_blank" title="X / Twitter"
+                                       rel="nofollow">
+                                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="w-5 h-5" viewBox="0 0 20 20" version="1.1">
+                                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <g transform="translate(-220.000000, -7399.000000)" fill="gray">
+                                            <g transform="translate(56.000000, 160.000000)">
+                                                <path d="M173.876,7239 C168.399,7239 164,7243.43481 164,7248.95866 C164,7253.05869 166.407,7256.48916 169.893,7258.07936 C169.893,7256.21186 169.88,7256.45286 171.303,7250.38046 C170.521,7248.80236 171.129,7246.19673 172.88,7246.19673 C175.31,7246.19673 173.659,7249.79964 173.378,7251.2174 C173.129,7252.30544 173.959,7253.14238 174.955,7253.14238 C176.864,7253.14238 178.108,7250.71524 178.108,7247.87063 C178.108,7245.69456 176.615,7244.10437 174.042,7244.10437 C169.467,7244.10437 168.307,7249.19966 169.893,7250.79893 C170.292,7251.40294 169.893,7251.43118 169.893,7252.22174 C169.616,7253.05768 167.403,7251.84259 167.403,7248.70757 C167.403,7245.86195 169.727,7242.51518 174.457,7242.51518 C178.191,7242.51518 180.681,7245.27609 180.681,7248.2054 C180.681,7252.13805 178.523,7254.98366 175.37,7254.98366 C174.291,7254.98366 173.295,7254.3978 172.963,7253.72824 C172.36,7256.07371 172.238,7257.26258 171.303,7258.58153 C172.216,7258.83261 173.129,7259 174.125,7259 C179.602,7259 184,7254.56519 184,7249.04235 C183.752,7243.43481 179.353,7239 173.876,7239">
+                                                </path>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>            </footer>
+
+    </div>
+</div>
 @livewireScripts
 </body>
 
@@ -244,25 +317,29 @@
                                     <a href="https://savoy.nordicmade.com/product-category/decoration/"><img
                                             src="https://savoy.nordicmade.com/wp-content/uploads/2020/08/category-thumb-decoration.jpg"
                                             loading="eager" alt="" width="160" height="160"
-                                            class="nm-menu-item-image"><span class="nm-menu-item-image-title">Decoration</span></a><span
+                                            class="nm-menu-item-image"><span
+                                            class="nm-menu-item-image-title">Decoration</span></a><span
                                         class="nm-menu-toggle"></span></li>
                                 <li class="shop-ajax-link shop-redirect-link menu-item menu-item-type-taxonomy menu-item-object-product_cat nm-menu-item-has-image menu-item-3172">
                                     <a href="https://savoy.nordicmade.com/product-category/essentials/"><img
                                             src="https://savoy.nordicmade.com/wp-content/uploads/2020/08/category-thumb-essentials.jpg"
                                             loading="eager" alt="" width="160" height="160"
-                                            class="nm-menu-item-image"><span class="nm-menu-item-image-title">Essentials</span></a><span
+                                            class="nm-menu-item-image"><span
+                                            class="nm-menu-item-image-title">Essentials</span></a><span
                                         class="nm-menu-toggle"></span></li>
                                 <li class="shop-ajax-link shop-redirect-link menu-item menu-item-type-taxonomy menu-item-object-product_cat nm-menu-item-has-image menu-item-3173">
                                     <a href="https://savoy.nordicmade.com/product-category/interior/"><img
                                             src="https://savoy.nordicmade.com/wp-content/uploads/2020/08/category-thumb-interior.jpg"
                                             loading="eager" alt="" width="160" height="160"
-                                            class="nm-menu-item-image"><span class="nm-menu-item-image-title">Interior</span></a><span
+                                            class="nm-menu-item-image"><span
+                                            class="nm-menu-item-image-title">Interior</span></a><span
                                         class="nm-menu-toggle"></span></li>
                                 <li class="shop-ajax-link menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item current_page_item nm-menu-item-has-image menu-item-3174">
                                     <a href="https://savoy.nordicmade.com/" aria-current="page"><img
                                             src="https://savoy.nordicmade.com/wp-content/uploads/2020/08/category-thumb-all.jpg"
                                             loading="eager" alt="" width="160" height="160"
-                                            class="nm-menu-item-image"><span class="nm-menu-item-image-title">Shop All</span></a><span
+                                            class="nm-menu-item-image"><span
+                                            class="nm-menu-item-image-title">Shop All</span></a><span
                                         class="nm-menu-toggle"></span></li>
                             </ul>
                         </li>
@@ -472,14 +549,16 @@
 <div id="nm-login-popup-wrap" class="nm-login-popup-wrap mfp-hide">
     <div class="mfp-close nm-font nm-font-close2">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="-0.5 0 25 25" fill="none">
-            <path d="M3 21.32L21 3.32001" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M3 3.32001L21 21.32" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M3 21.32L21 3.32001" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"/>
+            <path d="M3 3.32001L21 21.32" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+                  stroke-linejoin="round"/>
         </svg>
     </div>
 
     <div class="woocommerce-notices-wrapper"></div>
     <div id="customer_login" class="nm-myaccount-login">
-{{--        @include('auth.login')--}}
+        {{--        @include('auth.login')--}}
         <div class="woocommerce">
             <div class="woocommerce-notices-wrapper"></div>
             <div id="customer_login" class="nm-myaccount-login">
@@ -488,7 +567,7 @@
                     <div id="nm-login-wrap" class="inline slide-up fade-in">
                         <h2>Sign In</h2>
 
-                        <x-auth-session-status class="mb-4" :status="session('status')" />
+                        <x-auth-session-status class="mb-4" :status="session('status')"/>
 
                         <form class="login" method="POST" action="{{ route('login') }}">
                             @csrf
@@ -514,7 +593,9 @@
 
                             <p class="form-row form-group">
                                 <label for="remember_me" class="inline-flex items-center">
-                                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
+                                    <input id="remember_me" type="checkbox"
+                                           class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500"
+                                           name="remember">
                                     <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                                 </label>
 
@@ -633,55 +714,5 @@
         data-minify="1"></script>
 
 
-
-
-<footer id="nm-footer" class="nm-footer">
-
-    <div class="nm-footer-bar layout-default">
-        <div class="nm-footer-bar-inner">
-            <div class="nm-row">
-                <div class="nm-footer-bar-left col-md-8 col-xs-12">
-
-
-                    <ul id="nm-footer-bar-menu" class="menu">
-                        <li id="menu-item-386"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-386"><a
-                                href="https://savoy.nordicmade.com/about/">About Us</a></li>
-                        <li id="menu-item-388"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-388"><a
-                                href="https://savoy.nordicmade.com/blog/">Blog</a></li>
-                        <li id="menu-item-384"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-384"><a
-                                href="https://savoy.nordicmade.com/faq/">FAQs</a></li>
-                        <li id="menu-item-387"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-387"><a
-                                href="https://savoy.nordicmade.com/order-tracking/">Order Tracking</a></li>
-                        <li id="menu-item-385"
-                            class="menu-item menu-item-type-post_type menu-item-object-page menu-item-385"><a
-                                href="https://savoy.nordicmade.com/contact/">Contact</a></li>
-                        <li class="nm-menu-item-copyright menu-item"><span>© By <a
-                                    href="https://1.envato.market/xaNrR">NordicMade</a></span></li>
-                    </ul>
-
-                </div>
-
-                <div class="nm-footer-bar-right col-md-4 col-xs-12">
-
-                    <ul class="nm-footer-bar-social">
-                        <li><a href="https://www.facebook.com" target="_blank" title="Facebook"
-                               rel="nofollow"><i
-                                    class="nm-font nm-font-facebook"></i></a></li>
-                        <li><a href="https://www.instagram.com" target="_blank" title="Instagram"
-                               rel="nofollow"><i
-                                    class="nm-font nm-font-instagram"></i></a></li>
-                        <li><a href="https://www.twitter.com" target="_blank" title="X / Twitter"
-                               rel="nofollow"><i
-                                    class="nm-font nm-font-x-twitter"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
 
 </html>
