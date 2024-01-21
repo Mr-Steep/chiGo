@@ -45,11 +45,4 @@ class CartController extends Controller
             return redirect()->route('login')->with('notice', 'Для добавления заказа нужно авторизоваться');
         }
     }
-
-
-    public function removeFromCart(Cart $cart)
-    {
-        $cart->delete();
-        return redirect()->back()->with('success','Успешно Удален');
-    }
 }

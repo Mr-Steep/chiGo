@@ -19,4 +19,11 @@ class Cart extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
+
+    public function updateQuantity(int $amount)
+    {
+            $newQuantity = max(0, $this->quantity + $amount);
+            $this->update(['quantity' => $newQuantity]);
+    }
 }

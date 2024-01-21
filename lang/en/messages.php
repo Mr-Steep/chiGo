@@ -13,7 +13,8 @@ return [
     |
     */
 
-    'Dashboard' => 'Dashboard',
-    'Home' => 'Home',
-    'Categories' => 'Categories',
+    'dashboard'  => 'Dashboard',
+    'home'       => 'Home',
+    'categories' => 'Categories',
+    'catalog'    => 'Catalog',
 ];

@@ -1,10 +1,12 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LanguageController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,12 +23,20 @@ Route::resource('products', ProductController::class);
 
 Route::get('/', function () {
     $products = \App\Models\Product::get();
-    return view('welcome', ['products'=>$products]);
+//    return view('welcome', ['products'=>$products]);
+    return view('index', compact('products'));
 })->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->name('dashboard');
+
+
+Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
+
+//Route::get('/dashboard', function () {
+//    return view('dashboard');
+//})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile',    [ProfileController::class, 'edit'])->name('profile.edit');

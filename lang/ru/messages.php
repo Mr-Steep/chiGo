@@ -13,8 +13,9 @@ return [
     |
     */
 
-    'Dashboard'     => 'Дашбоард',
-    'Home'          => 'Дом',
-    'Categories'    => 'Категории',
+    'dashboard'     => 'Дашбоард',
+    'home'          => 'Дом',
+    'categories'    => 'Категории',
+    'catalog'       => 'Каталог',
 
 ];

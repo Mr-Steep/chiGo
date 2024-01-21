@@ -1,151 +1,137 @@
-@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white', 'cartItems'=>[]])
+{{--@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white'])--}}
 
-@php
-    switch ($align) {
-        case 'left':
-            $alignmentClasses = 'ltr:origin-top-left rtl:origin-top-right start-0';
-            break;
-        case 'top':
-            $alignmentClasses = 'origin-top';
-            break;
-        case 'right':
-        default:
-            $alignmentClasses = 'ltr:origin-top-right rtl:origin-top-left end-0';
-            break;
-    }
 
-    switch ($width) {
-        case '48':
-            $width = 'w-48';
-            break;
-    }
-@endphp
+{{--<div class="nm-widget-panel-inner" style="margin-right: 0px;">--}}
+{{--    <div class="nm-widget-panel-header">--}}
+{{--        <div class="nm-widget-panel-header-inner">--}}
+{{--            <a href="#" id="nm-widget-panel-close">--}}
+{{--                <span class="nm-cart-panel-title">Cart</span>--}}
+{{--                <span class="nm-widget-panel-close-title">Close</span>--}}
+{{--            </a>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
-<div class="relative" x-data="{ open: false }" @click.outside="open = false" @close.stop="open = false">
-    <div @click="open = ! open">
-        {{ $trigger }}
-    </div>
+{{--    <div class="widget_shopping_cart_content">--}}
 
-    <div x-show="open"
-         x-transition:enter="transition ease-out duration-200"
-         x-transition:enter-start="opacity-0 scale-95"
-         x-transition:enter-end="opacity-100 scale-100"
-         x-transition:leave="transition ease-in duration-75"
-         x-transition:leave-start="opacity-100 scale-100"
-         x-transition:leave-end="opacity-0 scale-95"
-         class="absolute z-50 mt-2 {{ $width }} rounded-md shadow-lg {{ $alignmentClasses }}"
-         style="display: none;"
-         @click="open = false">
-        <div class="relative z-10" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
-            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
-            <div class="fixed inset-0 overflow-hidden">
-                <div class="absolute inset-0 overflow-hidden">
-                    <div class="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-10">
-                        <div class="pointer-events-auto w-screen max-w-md">
-                            <div class="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
-                                <div class="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
-                                    <div class="flex items-start justify-between">
-                                        <h2 class="text-lg font-medium text-gray-900" id="slide-over-title">Shopping cart</h2>
-                                        <div class="ml-3 flex h-7 items-center">
-                                            <button type="button"
-                                                    class="relative -m-2 p-2 text-gray-400 hover:text-gray-500">
-                                                <span class="absolute -inset-0.5"></span>
-                                                <span class="sr-only">Close panel</span>
-                                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                                     stroke="currentColor" aria-hidden="true">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                          d="M6 18L18 6M6 6l12 12"/>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </div>
+{{--        <div id="nm-cart-panel" style="opacity: 1;">--}}
+{{--            <form id="nm-cart-panel-form" action="https://savoy.nordicmade.com/cart/" method="post">--}}
+{{--                <input type="hidden" id="_wpnonce" name="_wpnonce" value="ff28032ba3">--}}
+{{--                <input type="hidden" name="_wp_http_referer" value="/?add-to-cart=253&amp;nm-ajax-add-to-cart=1">--}}
+{{--            </form>--}}
 
-                                    <div class="mt-8">
-                                        <div class="flow-root">
-                                            <ul role="list" class="-my-6 divide-y divide-gray-200">
-                                                @if(count($cartProducts))
-                                                    @foreach($cartProducts as $cartProduct)
-                                                        <li class="flex py-6">
-                                                            <div
-                                                                class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                                                <img src="{{$cartProduct->product->image}}"
-                                                                     alt="Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch."
-                                                                     class="h-full w-full object-cover object-center">
-                                                            </div>
+{{--            <div id="nm-cart-panel-loader">--}}
+{{--                <span class="nm-loader">Updating…</span>--}}
+{{--            </div>--}}
 
-                                                            <div class="ml-4 flex flex-1 flex-col">
-                                                                <div>
-                                                                    <div
-                                                                        class="flex justify-between text-base font-medium text-gray-900">
-                                                                        <h3>
-                                                                            <a href="#">{{$cartProduct->product->name}}</a>
-                                                                        </h3>
-                                                                        <p class="ml-4">
-                                                                            ${{$cartProduct->product->price}}</p>
-                                                                    </div>
-                                                                    <div
-                                                                        class="flex justify-between text-sm font-medium text-gray-600">
-                                                                        <h3 class="mt-1"> {{ __('Quantity') }}
-                                                                        </h3>
-                                                                        <p class="ml-4">{{$cartProduct->quantity}}</p>
-                                                                    </div>
 
-                                                                </div>
-                                                                <div
-                                                                    class="flex flex-1 items-end justify-between text-sm">
-                                                                    <p class="text-gray-500"> {{ __('Quantity') }} {{$cartProduct->quantity}}</p>
+{{--            <div class="nm-cart-panel-list-wrap">--}}
 
-                                                                            <form method="POST" action="{{ route('cart.remove',$cartProduct) }}">
-                                                                                @method('delete')
-                                                                                @csrf
-                                                                                <x-dropdown-link :href="route('cart.remove', $cartProduct)"
-                                                                                                 onclick="event.preventDefault();
-                                                                                                  this.closest('form').submit();">
-                                                                                    {{ __('Remove') }}
-                                                                                </x-dropdown-link>
-                                                                            </form>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    @endforeach
-                                                @else
-                                                    <p class="mt-44 text-2xl text-black">Shopping cart is empty</p>
-                                                @endif
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+{{--                <ul class="woocommerce-mini-cart cart_list product_list_widget ">--}}
 
-                                <div class="border-t border-gray-200 px-4 py-6 sm:px-6">
-                                    <div class="flex justify-between text-base font-medium text-gray-900">
-                                        <p>Subtotal</p>
-                                        <p>$262.00</p>
-                                    </div>
-                                    <p class="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at
-                                        checkout.</p>
-                                    <div class="mt-6">
-                                        <a href="{{route('submit.order')}}"
-                                           class="flex items-center justify-center rounded-md border border-transparent bg-green-700 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-green-800">
-                                            Checkout
-                                        </a>
-                                    </div>
-                                    <div class="mt-6 flex justify-center text-center text-sm text-gray-500">
-                                        <p>
-                                            or
-                                            <button type="button"
-                                                    class="font-medium text-green-600 hover:text-green-500">
-                                                Continue Shopping
-                                                <span aria-hidden="true"> &rarr;</span>
-                                            </button>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+{{--                    @if(count($cartProducts))--}}
+{{--                        @foreach($cartProducts as $cartProduct)--}}
+{{--                            <li id="nm-cart-panel-item-45d9cebf419a92f3a8ad390c2f8bbfdf"--}}
+{{--                                class="woocommerce-mini-cart-item mini_cart_item">--}}
+{{--                                <div class="nm-cart-panel-item-thumbnail">--}}
+{{--                                    <div class="nm-cart-panel-thumbnail-wrap">--}}
+{{--                                        <a href="{{route('products.show', $cartProduct->product->id)}}">--}}
+{{--                                            <img width="350" height="434"--}}
+{{--                                                src="{{$cartProduct->product->image}}"--}}
+{{--                                                class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail" alt=""--}}
+{{--                                                decoding="async" loading="lazy"--}}
+{{--                                                sizes="(max-width: 350px) 100vw, 350px">--}}
+{{--                                        </a>--}}
+{{--                                        <div class="nm-cart-panel-thumbnail-loader nm-loader"></div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="nm-cart-panel-item-details">--}}
+{{--                                    <div class="nm-cart-item-loader nm-loader"></div>--}}
+{{--                                    <form method="POST" action="{{ route('cart.remove',$cartProduct) }}">--}}
+{{--                                        @method('delete')--}}
+{{--                                        @csrf--}}
+{{--                                        <a class="float-right" href="{{route('cart.remove', $cartProduct)}}" onclick="event.preventDefault(); this.closest('form').submit();">--}}
+{{--                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="-0.5 0 25 25" >--}}
+{{--                                                <path d="M3 21.32L21 3.32001" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>--}}
+{{--                                                <path d="M3 3.32001L21 21.32" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>--}}
+{{--                                            </svg>--}}
+{{--                                        </a>--}}
+{{--                                    </form>--}}
+{{--                                    <a href="{{route('products.show', $cartProduct->product->id)}}"--}}
+{{--                                       class="nm-cart-panel-product-title">{{$cartProduct->product->name}}</a>--}}
+{{--                                    <div class="nm-cart-panel-quantity-pricing">--}}
+{{--                                        <div class="product-quantity" data-title="Quantity">--}}
+{{--                                            <div class="nm-quantity-wrap qty-show">--}}
+{{--                                                <label>Quantity</label>--}}
+{{--                                                <label class="nm-qty-label-abbrev">Qty</label>--}}
+
+{{--                                                <div class="quantity">--}}
+{{--                                                    <div class="nm-qty-minus nm-font nm-font-media-play flip"></div>--}}
+{{--                                                    <input type="number" id="quantity_65aa7c96763e5"--}}
+{{--                                                           class="input-text qty text"--}}
+{{--                                                           name="cart[45d9cebf419a92f3a8ad390c2f8bbfdf][qty]" value="{{$cartProduct->quantity}}"--}}
+{{--                                                           aria-label="Product quantity" size="4" min="1" max="" step="1"--}}
+{{--                                                           placeholder="" pattern="[0-9]*">--}}
+{{--                                                    <div class="nm-qty-plus nm-font nm-font-media-play"></div>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                        </div>--}}
+
+{{--                                        <div class="nm-cart-panel-item-price">--}}
+{{--                                        <span class="woocommerce-Price-amount amount"><bdi><span--}}
+{{--                                                    class="woocommerce-Price-currencySymbol">$</span>{{$cartProduct->product->price}}</bdi></span>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </li>--}}
+{{--                        @endforeach--}}
+{{--                    @else--}}
+
+{{--                        <li class="empty !block">--}}
+{{--                            <i class="nm-font nm-font-close2"></i>--}}
+{{--                            <span>No products in the cart.</span>--}}
+{{--                        </li>--}}
+{{--                    @endif--}}
+
+
+
+
+{{--                </ul><!-- end product list -->--}}
+
+{{--            </div>--}}
+
+{{--            <div class="nm-cart-panel-summary">--}}
+
+{{--                <div class="nm-cart-panel-summary-inner">--}}
+
+{{--                    @if(count($cartProducts))--}}
+
+{{--                    <p class="woocommerce-mini-cart__total total">--}}
+{{--                        <strong>Subtotal:</strong>--}}
+{{--                        <span class="woocommerce-Price-amount amount">--}}
+{{--                            <bdi><span class="woocommerce-Price-currencySymbol">$</span>796.00</bdi>--}}
+{{--                        </span>--}}
+{{--                    </p>--}}
+{{--                    @endif--}}
+
+
+{{--                    <p class="woocommerce-mini-cart__buttons buttons">--}}
+{{--                        <a href="{{route('cart.index')}}" class="button wc-forward">View cart</a>--}}
+{{--                        <a href="https://savoy.nordicmade.com/checkout/" class="button checkout wc-forward">Checkout</a>--}}
+{{--                    </p>--}}
+
+
+{{--                    <p class="buttons nm-cart-empty-button">--}}
+{{--                        <a href="https://savoy.nordicmade.com/" id="nm-cart-panel-continue" class="button border">--}}
+{{--                            Continue shopping--}}
+{{--                        </a>--}}
+{{--                    </p>--}}
+
+{{--                </div>--}}
+
+{{--            </div>--}}
+
+
+{{--        </div>--}}
+{{--    </div>--}}
+{{--</div>--}}
