@@ -53,6 +53,14 @@ class ProductSeeder extends Seeder
             ],
         ];
 
+        for ($i = 0; $i < 34; $i++) {
+            $temp[] = [
+                'name'        => "Product " . ($i + 7),
+                'image'       => "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-0".rand(1, 8).".jpg",
+                'price'       => rand(20, 100),
+                'category_id' => rand(2, 15)
+            ];
+        }
 
         array_filter($temp, function ($item){
             DB::table('products')->insert([

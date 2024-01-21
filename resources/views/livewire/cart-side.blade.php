@@ -2,6 +2,8 @@
     <div class="nm-page-default-col col-xs-12">
         <div id="post-8" class="post-8 page type-page status-publish hentry">
             <div class="woocommerce">
+                @if(count($cartProducts))
+
                 <div class="woocommerce-notices-wrapper"></div>
                 <form class="woocommerce-cart-form" action="https://savoy.nordicmade.com/cart/" method="post">
 
@@ -548,7 +550,42 @@
                     </div>
 
                 </div>
+                @else
+                    <div class="nm-cart-empty">
 
+
+                        <p class="icon">
+                            <i class="nm-font nm-font-close2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" viewBox="-0.5 0 25 25">
+                                    <path d="M3 21.32L21 3.32001" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M3 3.32001L21 21.32" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </i>
+                        </p>
+
+                        <div class="woocommerce-notices-wrapper"></div>
+                        <div id="nm-preview-cart-notice">
+                            <div class="nm-preview-cart-notice-inner">
+                                <i class="nm-font nm-font-info-outline"></i>
+                                <strong>Preview:</strong> Cart always empty? Try closing the ThemeForest iFrame by clicking the link below:
+                                <a href="https://savoy.nordicmade.com/" class="iframe-close" title="Close ThemeForest preview iFrame"><u>Close iFrame</u></a>
+                                <a class="close nm-font nm-font-close2" title="Hide notice">
+
+                                </a>
+                            </div>
+                        </div><div class="wc-empty-cart-message">
+                            <div class="nm-shop-notice woocommerce-info">
+                                <span>Your cart is currently empty.</span>
+                            </div>
+                        </div>
+                        <p class="return-to-shop">
+                            <a class="button wc-backward" href="{{route('catalog.index')}}">
+                                Return to shop
+                            </a>
+                        </p>
+
+                    </div>
+                @endif
             </div>
         </div>
     </div>

@@ -21,8 +21,10 @@
 
 
     {{--    <script src="https://savoy.nordicmade.com/wp-includes/js/zxcvbn.min.js" type="text/javascript" async=""></script>--}}
-    <script type="text/javascript" src="https://savoy.nordicmade.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.0"
-            id="jquery-core-js"></script>
+{{--    <script type="text/javascript" src="https://savoy.nordicmade.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.0"--}}
+{{--            id="jquery-core-js"></script>--}}
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
     {{--    <script type="text/javascript"--}}
     {{--            src="https://savoy.nordicmade.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1"--}}
@@ -647,68 +649,25 @@
 </div>
 
 
-<script type="text/javascript" id="wc-add-to-cart-js-extra">
-    /* <![CDATA[ */
-    var wc_add_to_cart_params = {
-        "ajax_url": "\/wp-admin\/admin-ajax.php",
-        "wc_ajax_url": "\/?wc-ajax=%%endpoint%%",
-        "i18n_view_cart": "View cart",
-        "cart_url": "https:\/\/savoy.nordicmade.com\/cart\/",
-        "is_cart": "",
-        "cart_redirect_after_add": "no"
-    };
-    /* ]]> */
-</script>
 
 
-<script type="text/javascript" id="woocommerce-js-extra">
-    /* <![CDATA[ */
-    var woocommerce_params = {
-        "ajax_url": "\/wp-admin\/admin-ajax.php",
-        "wc_ajax_url": "\/?wc-ajax=%%endpoint%%"
-    };
-    /* ]]> */
-</script>
 
 
-<script type="text/javascript" id="wp-util-js-extra">
-    /* <![CDATA[ */
-    var _wpUtilSettings = {"ajax": {"url": "\/wp-admin\/admin-ajax.php"}};
-    /* ]]> */
-</script>
+{{--<script type="text/javascript" id="wp-util-js-extra">--}}
+{{--    /* <![CDATA[ */--}}
+{{--    var _wpUtilSettings = {"ajax": {"url": "\/wp-admin\/admin-ajax.php"}};--}}
+{{--    /* ]]> */--}}
+{{--</script>--}}
 
 
-<script type="text/javascript"
-        src="https://savoy.nordicmade.com/wp-includes/js/dist/hooks.min.js?ver=c6aec9a8d4e5a5d543a1"
-        id="wp-hooks-js"></script>
-<script type="text/javascript"
-        src="https://savoy.nordicmade.com/wp-includes/js/dist/i18n.min.js?ver=7701b0c3857f914212ef"
-        id="wp-i18n-js"></script>
+{{--<script type="text/javascript"--}}
+{{--        src="https://savoy.nordicmade.com/wp-includes/js/dist/hooks.min.js?ver=c6aec9a8d4e5a5d543a1"--}}
+{{--        id="wp-hooks-js"></script>--}}
+{{--<script type="text/javascript"--}}
+{{--        src="https://savoy.nordicmade.com/wp-includes/js/dist/i18n.min.js?ver=7701b0c3857f914212ef"--}}
+{{--        id="wp-i18n-js"></script>--}}
 
 
-<script type="text/javascript" id="wc-cart-fragments-js-extra">
-    /* <![CDATA[ */
-    var wc_cart_fragments_params = {
-        "ajax_url": "\/wp-admin\/admin-ajax.php",
-        "wc_ajax_url": "\/?wc-ajax=%%endpoint%%",
-        "cart_hash_key": "wc_cart_hash_e27fa7a29e68b5f557ecb4e5ee4b59d9",
-        "fragment_name": "wc_fragments_e27fa7a29e68b5f557ecb4e5ee4b59d9",
-        "request_timeout": "5000"
-    };
-    /* ]]> */
-</script>
-
-
-<script type="text/javascript" id="wc-add-to-cart-variation-js-extra">
-    /* <![CDATA[ */
-    var wc_add_to_cart_variation_params = {
-        "wc_ajax_url": "\/?wc-ajax=%%endpoint%%",
-        "i18n_no_matching_variations_text": "Sorry, no products matched your selection. Please choose a different combination.",
-        "i18n_make_a_selection_text": "Please select some product options before adding this product to your cart.",
-        "i18n_unavailable_text": "Sorry, this product is unavailable. Please choose a different combination."
-    };
-    /* ]]> */
-</script>
 
 <script src="https://savoy.nordicmade.com/wp-content/cache/min/1/8d4bd0a9d77078793eb5f75c2dc2a802.js"
         data-minify="1"></script>
