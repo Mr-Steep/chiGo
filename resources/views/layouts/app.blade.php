@@ -18,27 +18,7 @@
             visibility: visible;
         }
     </style>
-
-
-    {{--    <script src="https://savoy.nordicmade.com/wp-includes/js/zxcvbn.min.js" type="text/javascript" async=""></script>--}}
-{{--    <script type="text/javascript" src="https://savoy.nordicmade.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.0"--}}
-{{--            id="jquery-core-js"></script>--}}
-
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-
-    {{--    <script type="text/javascript"--}}
-    {{--            src="https://savoy.nordicmade.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1"--}}
-    {{--            id="jquery-migrate-js"></script>--}}
-
-
-    {{--    <link rel="https://api.w.org/" href="https://savoy.nordicmade.com/wp-json/">--}}
-    {{--    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://savoy.nordicmade.com/xmlrpc.php?rsd">--}}
-
-    {{--    <link rel="preload" as="font" href="https://savoy.nordicmade.com/wp-content/fonts/MaisonNeueWEB-Book.woff2"--}}
-    {{--          crossorigin="">--}}
-    {{--    <link rel="preload" as="font" href="https://savoy.nordicmade.com/wp-content/fonts/MaisonNeueWEB-Book.woff"--}}
-    {{--          crossorigin="">--}}
-
     <meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress.">
     <link rel="icon" href="https://savoy.nordicmade.com/wp-content/uploads/2015/10/favicon.png" sizes="32x32">
     <link rel="icon" href="https://savoy.nordicmade.com/wp-content/uploads/2015/10/favicon.png" sizes="192x192">
