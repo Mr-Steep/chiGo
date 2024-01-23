@@ -56,7 +56,9 @@
         <div class="nm-page-wrap-inner">
             <div id="nm-header-placeholder" class="nm-header-placeholder"></div>
 
-            @include('layouts.navigation')
+{{--            @include('layouts.navigation')--}}
+            <livewire:navigation />
+
 
 
             {{$slot}}

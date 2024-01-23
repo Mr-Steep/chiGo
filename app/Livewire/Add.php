@@ -103,6 +103,8 @@ class Add extends Component
 
         $this->dispatch('quantityUpdatedСard');
         $this->mount($this->product);
+        //reload navigation
+        $this->dispatch('reloadMount');
     }
 
     public function render()

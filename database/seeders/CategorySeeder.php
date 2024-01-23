@@ -12,7 +12,7 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $clothing = Category::create(['name' => 'Одежда']);
+        $clothing = Category::create(['name' => 'Одежда', 'image'=>'https://savoy.nordicmade.com/wp-content/uploads/2020/08/category-thumb-bags-backpacks.jpg']);
 
         $mensClothing   = $clothing->children()->create(['name' => 'Мужская одежда']);
         $womensClothing = $clothing->children()->create(['name' => 'Женская одежда']);
@@ -28,11 +28,16 @@ class CategorySeeder extends Seeder
         $womensClothing->children()->create(['name' => 'Панамка']);
         $womensClothing->children()->create(['name' => 'Браслет']);
 
-        $technic = Category::create(['name' => 'Техника']);
+        $technic = Category::create(['name' => 'Техника', 'image'=>'https://savoy.nordicmade.com/wp-content/uploads/2020/08/category-thumb-essentials.jpg']);
 
         $technic->children()->create(['name' => 'Мониторы']);
         $technic->children()->create(['name' => 'Мыши']);
         $technic->children()->create(['name' => 'Материнские платы']);
+
+        $decor = Category::create(['name' => 'Декор', 'image'=>'https://savoy.nordicmade.com/wp-content/uploads/2020/08/category-thumb-decoration.jpg']);
+
+        $home = Category::create(['name' => 'Дом и Сад', 'image'=>'https://savoy.nordicmade.com/wp-content/uploads/2020/08/category-thumb-interior.jpg']);
+
 
 
     }

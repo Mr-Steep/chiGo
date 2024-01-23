@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Services\AppService;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -51,8 +52,10 @@ class Catalog extends Component
 
     public function render()
     {
+        $appService = app(AppService::class);
+
         $categories    = Category::all();
-        $categoryTree  = $this->buildCategoryTree($categories);
+        $categoryTree  = $appService->buildCategoryTree($categories);
         $query         = Product::query();
 
         // Apply filters

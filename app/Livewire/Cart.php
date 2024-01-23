@@ -58,6 +58,8 @@ class Cart extends Component
         });
         $this->mount();
         $this->dispatch('quantityUpdatedPage');
+        //reload navigation
+        $this->dispatch('reloadMount');
     }
 
     public function incrementQuantity($productId)
@@ -71,6 +73,8 @@ class Cart extends Component
         });
         $this->mount();
         $this->dispatch('quantityUpdatedPage');
+        //reload navigation
+        $this->dispatch('reloadMount');
 
     }
 
@@ -89,6 +93,8 @@ class Cart extends Component
 
         $this->mount();
         $this->dispatch('quantityUpdatedPage');
+        //reload navigation
+        $this->dispatch('reloadMount');
 
     }
 
