@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('image'); // Предполагается, что это будет путь к изображению
             $table->decimal('price', 10, 2); // Предполагается, что это будет цена с двумя знаками после запятой
+            $table->text('description')->nullable();
             $table->unsignedBigInteger('category_id'); // Внешний ключ для связи с категориями
             $table->timestamps();
 

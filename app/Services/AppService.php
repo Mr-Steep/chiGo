@@ -2,23 +2,28 @@
 
 namespace App\Services;
 
-use Illuminate\Support\Facades\Auth;
+use App\Models\Cart;
+use App\Models\Shipping;
 
 class AppService
 {
-    public function quantityProducts(): int
+    public static function getCurrentCart()
     {
-        $q = 0;
-        if (Auth::check()) {
-            $q = Auth::user()->cart->sum('quantity');
-        }
-        return $q;
+        return Cart::getCurrentCart();
     }
-    public function buildCategoryTree($categories, $parentId = null) {
+    public static function getCurrentCartItems()
+    {
+        return Cart::getCurrentCart()->cartItems;
+    }
+    public static  function quantityProducts(): int
+    {
+        return self::getCurrentCartItems()->sum('quantity');
+    }
+    public static function buildCategoryTree($categories, $parentId = null) {
         $tree = [];
         foreach ($categories as $category) {
             if ($category->parent_id == $parentId) {
-                $children = $this->buildCategoryTree($categories, $category->id);
+                $children = self::buildCategoryTree($categories, $category->id);
                 if ($children) {
                     $category->children = $children;
                 }
@@ -26,6 +31,47 @@ class AppService
             }
         }
         return $tree;
+    }
+    public static function getProductFromCard($product_id)
+    {
+        return Cart::getCurrentCart()->cartItems->where('product_id', $product_id)->first();
+    }
+    public static function changeQuantityProduct($product_id, $amount){
+        $cart = Cart::getCurrentCart();
+        $cartItem = $cart->cartItems->where('product_id', $product_id)->first();
+        if (!$cartItem) {
+            $cartItem = $cart->addItemToCart($product_id);
+        } else {
+            $cartItem->quantity += $amount;
+            $cartItem->save();
+            if (!$cartItem->quantity) {
+                self::removeProductFromCart($product_id);
+            }
+        }
+    }
+
+    public static function removeProductFromCart($product_id)
+    {
+        $cart = Cart::getCurrentCart();
+        $cart->removeItemFromCart($product_id);
+    }
+
+
+
+
+
+    public static function refresh($instance)
+    {
+        $events = ['refreshCard', 'refreshCartSide', 'refreshNavigation', 'refreshProductShow'];
+
+        foreach ($events as $event) {
+            $instance->dispatch($event);
+        }
+    }
+
+    public static function getShippingOptions()
+    {
+        return Shipping::all();
     }
 
 }

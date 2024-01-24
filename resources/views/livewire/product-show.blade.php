@@ -25,8 +25,7 @@
                     <div class="nm-single-product-summary-col col-xs-12">
                         <div
                             class="woocommerce-product-gallery woocommerce-product-gallery--with-images woocommerce-product-gallery--columns-4 images lightbox-enabled zoom-enabled pagination-enabled"
-                            data-columns="4" style="opacity: 1; transition: opacity 0.25s ease-in-out 0s;"><a href="#"
-                                                                                                              class="woocommerce-product-gallery__trigger">🔍</a>
+                            data-columns="4" style="opacity: 1; transition: opacity 0.25s ease-in-out 0s;"><a href="#" class="woocommerce-product-gallery__trigger">🔍</a>
 
                             <div class="woocommerce-product-gallery__wrapper" style="height: auto">
                                 <div
@@ -76,8 +75,7 @@
                                 </div>
 
 
-                                <form class="cart" action="https://savoy.nordicmade.com/product/emil-backpack/"
-                                      method="post" enctype="multipart/form-data">
+                                <form class="cart" wire:submit="submit">
 
                                     <div class="nm-quantity-wrap qty-show">
                                         <label>Quantity</label>

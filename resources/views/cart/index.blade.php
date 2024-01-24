@@ -2,7 +2,7 @@
 <x-app-layout>
 
 
-    <livewire:cart :side="false" />
+    <livewire:cart/>
 
 
 

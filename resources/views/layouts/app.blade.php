@@ -526,7 +526,7 @@
 </div>
 <div id="nm-widget-panel" class="nm-widget-panel">
 
-    <livewire:cart />
+    <livewire:cart-side />
 
 </div>
 

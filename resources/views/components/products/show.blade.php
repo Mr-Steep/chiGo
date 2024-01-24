@@ -2,5 +2,5 @@
 
 
 <x-app-layout>
-    <livewire:add :product="$product" />
+    <livewire:product-show :product="$product" />
 </x-app-layout>

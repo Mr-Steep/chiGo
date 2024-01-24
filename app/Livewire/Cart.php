@@ -2,33 +2,34 @@
 
 namespace App\Livewire;
 
+use App\Services\AppService;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class Cart extends Component
 {
-    protected $listeners = ['quantityUpdatedСard' => 'updateQuantityСard'];
+    protected $listeners = ['refreshCard' => 'refresh'];
 
     public $cartProducts = [];
-
-    public $costProducts;
-    public $costDelivery;
 
     public $discount;
     public $totalCost;
     public $totalQuantity;
     public $totalQuantityProducts;
+    public $shippings;
+    public $costProducts;
+    public $activeShipping;
 
-    private bool $side;
+    public function mount(){
 
-    public function mount($side = true){
-
-        $this->side = $side;
-
-        $this->cartProducts = Auth::check() ? Auth::user()->cart : [];
+        $cart                  = AppService::getCurrentCart();
+        $this->cartProducts    = $cart->cartItems;
+        $this->activeShipping  = $cart->shipping_id;
+        $this->shippings       = AppService::getShippingOptions();
 
         $this->costProducts  = 0;
-        $this->costDelivery  = 20;
+        $costShipping  = $cart->shipping->shipping_cost;
+
         $this->discount      = 0;
         $this->totalQuantity = 0;
 
@@ -37,71 +38,44 @@ class Cart extends Component
             $this->costProducts  += $cartProduct->cost;
             $this->totalQuantity += $cartProduct->quantity;
         }
-        $this->totalQuantityProducts = $this->costDelivery + $this->costProducts;
-
-        $this->totalCost             = $this->costProducts - $this->discount;
+        $this->totalQuantityProducts = $costShipping + $this->costProducts;
+        $this->totalCost             = $this->totalQuantityProducts - $this->discount;
     }
 
-    public function updateQuantityСard()
+    public function refresh()
     {
         $this->mount();
     }
 
     public function removeFromCart($productId)
     {
-        // Logic to remove item from cart
-        $this->cartProducts = $this->cartProducts->map(function ($item) use ($productId) {
-            if ($item->id == $productId) {
-                $item->delete();
-            }
-            return $item;
-        });
-        $this->mount();
-        $this->dispatch('quantityUpdatedPage');
-        //reload navigation
-        $this->dispatch('reloadMount');
+       AppService::removeProductFromCart($productId);
+       AppService::refresh($this);
     }
 
     public function incrementQuantity($productId)
     {
-        // Logic to remove item from cart
-        $this->cartProducts = $this->cartProducts->map(function ($item) use ($productId) {
-            if ($item->id == $productId) {
-                $item->updateQuantity(1);
-            }
-            return $item;
-        });
-        $this->mount();
-        $this->dispatch('quantityUpdatedPage');
-        //reload navigation
-        $this->dispatch('reloadMount');
-
+        AppService::changeQuantityProduct($productId,1);
+        AppService::refresh($this);
     }
 
     public function decrementQuantity($productId)
     {
-        // Logic to remove item from cart
-        $this->cartProducts = $this->cartProducts->map(function ($item) use ($productId) {
-            if ($item->id == $productId) {
-                $item->updateQuantity(-1);
-                if(!$item->quantity){
-                    $this->removeFromCart($productId);
-                }
-            }
-            return $item;
-        });
+        AppService::changeQuantityProduct($productId,-1);
+        AppService::refresh($this);
+    }
 
-        $this->mount();
-        $this->dispatch('quantityUpdatedPage');
-        //reload navigation
-        $this->dispatch('reloadMount');
+    public function setShipping($shippingId){
+        $cart =  AppService::getCurrentCart();
+        $cart->shipping_id = $shippingId;
+        $cart->save();
+        $this->refresh();
 
     }
 
 
     public function render()
     {
-        $view = $this->side?"livewire.cart":'livewire.cart-side';
-        return view($view);
+        return view("livewire.cart");
     }
 }

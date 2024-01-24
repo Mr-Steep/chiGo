@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\Cart;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -25,9 +26,18 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        $oldSessionId =  session()->getId();
+
         $request->authenticate();
 
         $request->session()->regenerate();
+
+
+        $cart = Cart::where('session_id', $oldSessionId)->first();
+        if ($cart) {
+            $cart->session_id  = session()->getId();
+            $cart->save();
+        }
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }

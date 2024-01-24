@@ -9,21 +9,20 @@ use Livewire\Component;
 class Navigation extends Component
 {
 
-    protected $listeners = ['reloadMount' => 'reloadMount'];
+    protected $listeners = ['refreshNavigation' => 'refresh'];
 
     public int $quantityProducts;
     public $categoriesTree;
 
     public function mount()
     {
-        $appService = app(AppService::class);
-        $this->quantityProducts = $appService->quantityProducts();
+        $this->quantityProducts = AppService::quantityProducts();
 
         $categories    = Category::all();
-        $this->categoriesTree = $appService->buildCategoryTree($categories);
+        $this->categoriesTree = AppService::buildCategoryTree($categories);
     }
 
-    public function reloadMount()
+    public function refresh()
     {
         $this->mount();
     }

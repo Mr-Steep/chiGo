@@ -23,20 +23,16 @@ Route::resource('products', ProductController::class);
 
 Route::get('/', function () {
     $products = \App\Models\Product::inRandomOrder()->limit(30)->get();
-//    return view('welcome', ['products'=>$products]);
     return view('index', compact('products'));
 })->name('home');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+//Route::get('/dashboard', function () {
+//    return view('dashboard');
+//})->name('dashboard');
 
 
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
 
-//Route::get('/dashboard', function () {
-//    return view('dashboard');
-//})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile',    [ProfileController::class, 'edit'])->name('profile.edit');
@@ -44,7 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-    Route::get('/submit-order',    [OrderController::class,'submitOrder'])->name('submit.order');
+    Route::get('/createOrder',    [OrderController::class,'createOrder'])->name('create.order');
 
 });
 
