@@ -16,11 +16,19 @@ class CreateCart
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $session_id = session()->getId();
-        $cart = Cart::where('session_id', $session_id)->first();
+        $id         = session()->getId();
+        $user_id    = auth()->id();
+        if($user_id){
+            $cart = Cart::where('user_id', $user_id)->first();
+            if (!$cart) {
+                $cart = Cart::create(['user_id' => $user_id]);
+            }
 
-        if (!$cart) {
-            $cart = Cart::create(['session_id' => $session_id]);
+        }else{
+            $cart = Cart::where('session_id', $id)->first();
+            if (!$cart) {
+                $cart = Cart::create(['session_id' => $id]);
+            }
         }
 
         return $next($request);

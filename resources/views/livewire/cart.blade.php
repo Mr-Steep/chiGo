@@ -293,7 +293,8 @@
                             </table>
 
                             <div class="wc-proceed-to-checkout">
-                                <form method="GET" action="{{ route('create.order') }}">
+                                <form method="POST" action="{{ route('order.create') }}">
+                                    @method('post')
                                     @csrf
                                     <button type="submit" class="checkout-button button alt wc-forward">Proceed to checkout</button>
                                 </form>

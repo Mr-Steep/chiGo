@@ -15,7 +15,6 @@ class Cart extends Component
     public $discount;
     public $totalCost;
     public $totalQuantity;
-    public $totalQuantityProducts;
     public $shippings;
     public $costProducts;
     public $activeShipping;
@@ -26,20 +25,12 @@ class Cart extends Component
         $this->cartProducts    = $cart->cartItems;
         $this->activeShipping  = $cart->shipping_id;
         $this->shippings       = AppService::getShippingOptions();
+        $this->discount        = 0;
+        $this->costProducts    = AppService::getCurrentCartCostProducts();
+        $this->totalQuantity   = AppService::quantityProducts();
 
-        $this->costProducts  = 0;
-        $costShipping  = $cart->shipping->shipping_cost;
-
-        $this->discount      = 0;
-        $this->totalQuantity = 0;
-
-        foreach ($this->cartProducts as $cartProduct) {
-            $cartProduct->cost    = $cartProduct->quantity * $cartProduct->product->price;
-            $this->costProducts  += $cartProduct->cost;
-            $this->totalQuantity += $cartProduct->quantity;
-        }
-        $this->totalQuantityProducts = $costShipping + $this->costProducts;
-        $this->totalCost             = $this->totalQuantityProducts - $this->discount;
+        $costShipping          = $cart->shipping->shipping_cost;
+        $this->totalCost       = $costShipping + $this->costProducts - $this->discount;
     }
 
     public function refresh()

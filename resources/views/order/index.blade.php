@@ -1,3 +1,13 @@
+@props(['order'])
+@php
+
+    $orderProducts = $order->orderItems;
+    $costProducts  = $order->getOrderCostProducts();
+    $orderShipping = $order->shipping;
+
+@endphp
+
+
 <x-app-layout>
 
     <div class="nm-page-default nm-row">
@@ -82,8 +92,8 @@
                         </form>
                     </div>
                     <div class="woocommerce-notices-wrapper"></div>
-                    <form name="checkout" method="post" class="checkout woocommerce-checkout !w-full" action="/"
-                          enctype="multipart/form-data" novalidate="novalidate">
+{{--                    <form name="checkout" method="post" class="checkout woocommerce-checkout !w-full" action="/"--}}
+{{--                          enctype="multipart/form-data" novalidate="novalidate">--}}
 
                         <ul class="nm-checkout-login-coupon">
                             <li>
@@ -127,15 +137,6 @@
                                                                                          id="billing_last_name"
                                                                                          placeholder="" value=""
                                                                                          autocomplete="family-name"></span>
-                                        </p>
-                                        <p class="form-row form-row-wide" id="billing_company_field" data-priority="30">
-                                            <label for="billing_company" class="">Company name&nbsp;<span
-                                                    class="optional">(optional)</span></label><span
-                                                class="woocommerce-input-wrapper"><input type="text" class="input-text "
-                                                                                         name="billing_company"
-                                                                                         id="billing_company"
-                                                                                         placeholder="" value=""
-                                                                                         autocomplete="organization"></span>
                                         </p>
                                         <p class="form-row form-row-wide address-field update_totals_on_change validate-required"
                                            id="billing_country_field" data-priority="40"><label for="billing_country"
@@ -874,23 +875,23 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($cartProducts as $cartProduct)
+                                    @foreach($orderProducts as $orderProduct)
                                         <tr class="cart_item">
                                             <td colspan="2">
                                                 <div class="nm-checkout-product-wrap">
                                                     <div class="nm-checkout-product-thumbnail">
                                                         <img width="300" height="372"
-                                                             src="{{$cartProduct->product->image}}"
+                                                             src="{{$orderProduct->product->image}}"
                                                              class="attachment-woocommerce_thumbnail size-woocommerce_thumbnail"
                                                              alt="" decoding="async" loading="lazy"
                                                              sizes="(max-width: 300px) 100vw, 300px"></div>
 
-                                                    <div class="nm-checkout-product-name product-name">{{$cartProduct->product->name}}&nbsp; <strong
-                                                            class="product-quantity">×&nbsp;{{$cartProduct->quantity}}</strong></div>
+                                                    <div class="nm-checkout-product-name product-name">{{$orderProduct->product->name}}&nbsp; <strong
+                                                            class="product-quantity">×&nbsp;{{$orderProduct->quantity}}</strong></div>
 
                                                     <div class="nm-checkout-product-total product-total">
                                                     <span class="woocommerce-Price-amount amount"><bdi><span
-                                                                class="woocommerce-Price-currencySymbol">$</span>{{$cartProduct->product->price}}</bdi></span>
+                                                                class="woocommerce-Price-currencySymbol">$</span>{{$orderProduct->product->price}}</bdi></span>
                                                     </div>
                                                 </div>
                                             </td>
@@ -900,39 +901,19 @@
                                     </tbody>
                                     <tfoot>
 
-                                    <tr class="cart-subtotal">
+                                    <tr class="cart_item">
                                         <th>Subtotal</th>
                                         <td><span class="woocommerce-Price-amount amount"><bdi><span
-                                                        class="woocommerce-Price-currencySymbol">$</span>79.00</bdi></span>
+                                                        class="woocommerce-Price-currencySymbol">$</span>{{$costProducts}}</bdi></span>
                                         </td>
                                     </tr>
 
 
-                                    <tr class="woocommerce-shipping-totals shipping">
-                                        <th>Shipping</th>
-                                        <td data-title="Shipping" colspan="2">
-                                            <p class="nm-shipping-th-title">Shipping</p>
 
-                                            <ul id="shipping_method" class="woocommerce-shipping-methods">
-                                                <li>
-                                                    <input type="radio" name="shipping_method[0]" data-index="0"
-                                                           id="shipping_method_0_flat_rate1" value="flat_rate:1"
-                                                           class="shipping_method" checked="checked"><label
-                                                        for="shipping_method_0_flat_rate1">Standard: <span
-                                                            class="woocommerce-Price-amount amount"><bdi><span
-                                                                    class="woocommerce-Price-currencySymbol">$</span>10.00</bdi></span></label>
-                                                </li>
-                                                <li>
-                                                    <input type="radio" name="shipping_method[0]" data-index="0"
-                                                           id="shipping_method_0_flat_rate2" value="flat_rate:2"
-                                                           class="shipping_method"><label
-                                                        for="shipping_method_0_flat_rate2">Express: <span
-                                                            class="woocommerce-Price-amount amount"><bdi><span
-                                                                    class="woocommerce-Price-currencySymbol">$</span>19.00</bdi></span></label>
-                                                </li>
-                                            </ul>
-
-
+                                    <tr class="order-total">
+                                        <th>Shipping: {{$orderShipping->name}}</th>
+                                        <td><strong><span class="woocommerce-Price-amount amount"><bdi><span
+                                                            class="woocommerce-Price-currencySymbol">$</span>{{$orderShipping->shipping_cost}}</bdi></span></strong>
                                         </td>
                                     </tr>
 
@@ -940,7 +921,7 @@
                                     <tr class="order-total">
                                         <th>Total</th>
                                         <td><strong><span class="woocommerce-Price-amount amount"><bdi><span
-                                                            class="woocommerce-Price-currencySymbol">$</span>89.00</bdi></span></strong>
+                                                            class="woocommerce-Price-currencySymbol">$</span>{{$order->total_amount}}</bdi></span></strong>
                                         </td>
                                     </tr>
 
@@ -999,17 +980,26 @@
 
 
                                         <button type="submit" class="button alt" name="woocommerce_checkout_place_order"
-                                                id="place_order" value="Place order" data-value="Place order">Place
-                                            order
+                                                id="place_order" value="Place order" data-value="Place order">Place order
                                         </button>
 
+
+                                        <form method="POST" action="{{ route('order.delete',$order) }}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="button alt !bg-red-500"
+                                                    name="woocommerce_checkout_place_order"
+                                                    id="place_order" value="Place order" data-value="Place order">Cancel
+                                                Order
+                                            </button>
+                                        </form>
                                         <input type="hidden" id="woocommerce-process-checkout-nonce"
                                                name="woocommerce-process-checkout-nonce" value="1ce42d8719"><input
                                             type="hidden" name="_wp_http_referer" value="/?wc-ajax=update_order_review">
                                     </div>
                                 </div>
                             </div>
-                    </form>
+{{--                    </form>--}}
 
                 </div>
             </div>

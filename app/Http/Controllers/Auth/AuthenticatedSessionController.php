@@ -26,7 +26,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $oldSessionId =  session()->getId();
+        $oldSessionId = session()->getId();
 
         $request->authenticate();
 
@@ -36,6 +36,7 @@ class AuthenticatedSessionController extends Controller
         $cart = Cart::where('session_id', $oldSessionId)->first();
         if ($cart) {
             $cart->session_id  = session()->getId();
+            $cart->user_id     = Auth::user()->getAuthIdentifier();
             $cart->save();
         }
 

@@ -12,11 +12,14 @@ return new class extends Migration {
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->string('session_id');
+            $table->string('session_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
+
             $table->unsignedBigInteger('coupon_id')->nullable();
             $table->unsignedBigInteger('shipping_id')->nullable()->default(1);
             $table->timestamps();
 
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('coupon_id')->references('id')->on('coupons')->onDelete('set null');
             $table->foreign('shipping_id')->references('id')->on('shippings')->onDelete('set null');
         });

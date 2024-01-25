@@ -103,7 +103,7 @@
                         <p class="woocommerce-mini-cart__total total">
                             <strong>Subtotal:</strong>
                             <span class="woocommerce-Price-amount amount">
-                            <bdi><span class="woocommerce-Price-currencySymbol">$</span>{{$totalCost}}</bdi>
+                            <bdi><span class="woocommerce-Price-currencySymbol">$</span>{{$costProducts}}</bdi>
                         </span>
                         </p>
                     @endif

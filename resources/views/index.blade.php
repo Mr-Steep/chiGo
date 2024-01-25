@@ -57,7 +57,7 @@
 
 
                                     <div class="woocommerce-notices-wrapper"></div>
-                                    <h2 class="py-5">Top products</h2>
+                                    <h2 class="py-5">Top 100</h2>
                                     <ul class="nm-products products xsmall-block-grid-2 small-block-grid-2 medium-block-grid-3 large-block-grid-5 grid-default layout-default attributes-position-thumbnail has-action-links">
 
                                         @foreach($products as $product)

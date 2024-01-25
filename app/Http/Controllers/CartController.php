@@ -1,18 +1,24 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
-use App\Models\Cart;
+use App\Models\Notification;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use App\Models\CartItem;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
     public function index()
     {
+        if (Auth::check()) {
+            $order = Auth::user()->order->where(function ($item) {
+                return $item->status_id < 4;
+            });
+            if(count($order)){
+                Notification::addNotification(Auth::user()->getAuthIdentifier(), 'order', 'У Вас есть незаконченный Заказ');
+            }
+        }
 
         return view('cart.index');
     }

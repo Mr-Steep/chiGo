@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
-class Coupon
+use Illuminate\Database\Eloquent\Model;
+
+class Coupon extends Model
 {
-    protected $fillable = ['session_id', 'coupon_id', 'shipping_id'];
+    protected $fillable = ['code', 'discount_amount'];
 
 
 }

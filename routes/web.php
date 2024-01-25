@@ -1,12 +1,13 @@
 <?php
 
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LanguageController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,10 +27,6 @@ Route::get('/', function () {
     return view('index', compact('products'));
 })->name('home');
 
-//Route::get('/dashboard', function () {
-//    return view('dashboard');
-//})->name('dashboard');
-
 
 Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
 
@@ -40,7 +37,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-    Route::get('/createOrder',    [OrderController::class,'createOrder'])->name('create.order');
+    Route::post('/order/create',           [OrderController::class,'create'])->name('order.create');
+    Route::delete('/order/remove/{order}', [OrderController::class,'remove'])->name('order.delete');
+    Route::get('/order',                   [OrderController::class,'index'])->name('order.index');
+
+    Route::resource('addresses', AddressController::class);
+
+
+    Route::resource('dashboard', DashboardController::class);
+
 
 });
 

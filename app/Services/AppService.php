@@ -15,6 +15,14 @@ class AppService
     {
         return Cart::getCurrentCart()->cartItems;
     }
+    public static function getCurrentCartCostProducts()
+    {
+        return self::getCurrentCartItems()->sum(function ($cartItem) {
+            return $cartItem->quantity * $cartItem->product->price;
+        });
+    }
+
+
     public static  function quantityProducts(): int
     {
         return self::getCurrentCartItems()->sum('quantity');
@@ -50,15 +58,16 @@ class AppService
         }
     }
 
+    public static function emptyCart(): void
+    {
+        Cart::getCurrentCart()->clearCart();
+    }
+
     public static function removeProductFromCart($product_id)
     {
         $cart = Cart::getCurrentCart();
         $cart->removeItemFromCart($product_id);
     }
-
-
-
-
 
     public static function refresh($instance)
     {
@@ -72,6 +81,13 @@ class AppService
     public static function getShippingOptions()
     {
         return Shipping::all();
+    }
+
+    public static function getTotalCost($cart)
+    {
+        $discount = 0;
+        $costShipping = $cart->shipping->shipping_cost;
+        return $costShipping + AppService::getCurrentCartCostProducts() - $discount;
     }
 
 }

@@ -48,8 +48,8 @@
 
 </head>
 
-<body
-    class="page-template-default page page-id-8 theme-savoy woocommerce-cart woocommerce-page woocommerce-js nm-page-load-transition-0 header-fixed header-mobile-default header-border-1 widget-panel-dark wpb-js-composer js-comp-ver-7.1 vc_responsive">
+<livewire:notifications/>
+<body class="page-template-default page page-id-8 theme-savoy woocommerce-cart woocommerce-page woocommerce-js nm-page-load-transition-0 header-fixed header-mobile-default header-border-1 widget-panel-dark wpb-js-composer js-comp-ver-7.1 vc_responsive">
 
 <div class="nm-page-overflow">
     <div class="nm-page-wrap">

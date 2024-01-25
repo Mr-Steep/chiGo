@@ -9,31 +9,13 @@ class CartSide extends Component
 {
     protected $listeners = ['refreshCartSide' => 'refresh'];
 
-    public $cartProducts = [];
+    public $cartProducts;
     public $costProducts;
-    public $costDelivery;
-
-    public $discount;
-    public $totalCost;
-    public $totalQuantity;
-    public $totalQuantityProducts;
 
 
     public function mount($side = false){
         $this->cartProducts = AppService::getCurrentCartItems();
-
-        $this->costProducts  = 0;
-        $this->costDelivery  = 20;
-        $this->discount      = 0;
-        $this->totalQuantity = 0;
-
-        foreach ($this->cartProducts as $cartProduct) {
-            $cartProduct->cost    = $cartProduct->quantity * $cartProduct->product->price;
-            $this->costProducts  += $cartProduct->cost;
-            $this->totalQuantity += $cartProduct->quantity;
-        }
-        $this->totalQuantityProducts = $this->costDelivery + $this->costProducts;
-        $this->totalCost             = $this->costProducts - $this->discount;
+        $this->costProducts  = AppService::getCurrentCartCostProducts();
     }
 
     public function refresh()

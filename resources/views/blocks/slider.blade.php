@@ -16,7 +16,7 @@
 @endphp
 
 
-<section class="splide">
+<section class="splide splide-banner">
     <div class="splide__track">
         <ul class="splide__list">
             @foreach($sliders as $slider)
@@ -53,3 +53,16 @@
         speed: 1500,
     }).mount();
 </script>
+
+
+
+<style>
+    .splide__arrow{
+        display: none;
+    }
+    .splide-banner:hover{
+        .splide__arrow{
+            display: flex;
+        }
+    }
+</style>

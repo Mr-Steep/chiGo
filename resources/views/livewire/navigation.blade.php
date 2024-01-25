@@ -129,15 +129,73 @@
                                 </a>
                             </li>
                             <li class="nm-menu-account menu-item-default has-icon" aria-label="My account">
-                                <a href="/my-account/" id="nm-menu-account-btn">
-                                    <svg class="nm-myaccount-icon nm-font nm-font-head w-6 h-6"
+
+
+                                <a>
+                                    <svg id="dropdownInformationButton"
+                                         onclick="$('#dropdownInformation').toggle()"
+                                         data-dropdown-toggle="dropdownInformation" class="nm-myaccount-icon nm-font nm-font-head w-6 h-6"
                                          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
                                         <path
                                             d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
                                             stroke="#000000" stroke-width="1.5" stroke-linecap="round"
                                             stroke-linejoin="round"/>
                                     </svg>
-                                </a></li>
+                                </a>
+
+
+                                <!-- Dropdown menu -->
+                                <div id="dropdownInformation" class="z-10 right-3 absolute hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+{{--                                    <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">--}}
+{{--                                        <div>Bonnie Green</div>--}}
+{{--                                        <div class="font-medium truncate">name@flowbite.com</div>--}}
+{{--                                    </div>--}}
+{{--                                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformationButton">--}}
+{{--                                        <li>--}}
+{{--                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>--}}
+{{--                                        </li>--}}
+{{--                                    </ul>--}}
+{{--                                    <div class="py-2">--}}
+{{--                                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>--}}
+{{--                                    </div>--}}
+                                    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformationButton">
+                                @auth
+                                        <x-dropdown-link :href="route('dashboard.index')">
+                                            {{ __('Dashboard') }}
+                                        </x-dropdown-link>
+
+                                        <!-- Authentication -->
+                                            <div class="py-2">
+                                                <form method="POST" action="{{ route('logout') }}">
+                                                    @csrf
+                                                    <x-dropdown-link :href="route('logout')"
+                                                                     onclick="event.preventDefault();
+                                                                     this.closest('form').submit();">
+                                                        {{ __('Log Out') }}
+                                                    </x-dropdown-link>
+                                                </form>
+                                            </div>
+
+                                    @else
+                                        <x-dropdown-link :href="route('login')">
+                                            {{ __('Login') }}
+                                        </x-dropdown-link>
+                                        <x-dropdown-link :href="route('register')">
+                                            {{ __('Register') }}
+                                        </x-dropdown-link>
+                                    @endauth
+                                    </ul>
+
+                                </div>
+
+
+                            </li>
                             <li class="nm-menu-cart menu-item-default has-icon">
                                 <a href="#" id="nm-menu-cart-btn">
                                                 <span class="!absolute count !top-2 !left-8 ">
