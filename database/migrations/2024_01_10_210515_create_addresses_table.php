@@ -17,14 +17,15 @@ return new class extends Migration
             $table->string('city');
             $table->string('street');
             $table->string('house');
-            $table->string('floor');
+            $table->string('floor')->nullable();
             $table->string('flat');
             $table->string('zip_code');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('session_id')->nullable();
             $table->timestamps();
 
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
         });
     }
 

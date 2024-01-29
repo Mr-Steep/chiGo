@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Notifications\OrderConfirmation;
 use App\Services\AppService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,33 +11,30 @@ use Illuminate\Support\Facades\Auth;
 class OrderController extends Controller
 {
 
-    function index(){
-
-        $order = Order::getCurrentOrder();
+    function index(Order $order = null) {
+        $order = $order ?? Order::getCurrentOrder();
         return view('order.index', compact('order'));
     }
 
     function create(Request $request)
     {
-        $cart = AppService::getCurrentCart();
-        $cartProducts = $cart->cartItems;
+        $cart     = AppService::getCurrentCart();
+        if(!$cart->shipping_id || !$cart->address_id){
+            return redirect()->back()->with('no shipping_id or address_id');
+        }
 
-        $newOrder = new Order();
-        $newOrder->user_id =   Auth::user()->getAuthIdentifier();
-        $newOrder->shipping_id = $cart->shipping_id;
-        $newOrder->total_amount = AppService::getTotalCost($cart);
-        $newOrder->save();
+        $newOrder = Order::createNewOrder($cart->shipping_id, $cart->address_id, AppService::getTotalCost($cart));
 
-        foreach ($cartProducts as $cartProduct){
+        $cart->cartItems->map(function ($cartProduct) use($newOrder){
             $newOrder->addItemToOrder(
                 $cartProduct->product_id,
                 $cartProduct->quantity,
                 $cartProduct->product->price,
             );
-        }
-
+        });
+        Auth::user()->notify(new OrderConfirmation($newOrder));
         AppService::emptyCart();
-        return redirect()->route('order.index');
+        return redirect()->route('order.index', $newOrder);
     }
 
     function remove(Order $order){
@@ -48,6 +46,16 @@ class OrderController extends Controller
         });
         $order->delete();
         return redirect()->route('cart.index');
+
+    }
+
+    function confirmOrder(Order $order)
+    {
+
+        $order->status_id =  2;
+        $order->update();
+
+        return response()->json(['message' => 'ok']);
 
     }
 

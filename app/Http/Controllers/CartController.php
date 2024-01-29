@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use App\Models\Notification;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller
 {
@@ -22,6 +24,43 @@ class CartController extends Controller
 
         return view('cart.index');
     }
+
+    public function storeNoAuth(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), [
+            'country'  => 'required',
+            'city'     => 'required',
+            'street'   => 'required',
+            'house'    => 'required',
+            'flat'     => 'required',
+            'zip_code' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput()
+                ->with('open-add', true);
+        }
+
+        $address = new Address([
+            'country'     => $request->input('country'),
+            'city'        => $request->input('city'),
+            'street'      => $request->input('street'),
+            'house'       => $request->input('house'),
+            'flat'        => $request->input('flat'),
+            'zip_code'    => $request->input('zip_code'),
+            'session_id'  => session()->getId(),
+        ]);
+
+        $address->save();
+
+        return redirect()->back()->with('success', 'Address created successfully.');
+    }
+
 
     public function addToCart(Request $request, Product $product)
     {

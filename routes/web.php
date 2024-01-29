@@ -39,23 +39,26 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/order/create',           [OrderController::class,'create'])->name('order.create');
     Route::delete('/order/remove/{order}', [OrderController::class,'remove'])->name('order.delete');
-    Route::get('/order',                   [OrderController::class,'index'])->name('order.index');
+    Route::get('/order/{order}',          [OrderController::class,'index'])->name('order.index');
 
     Route::resource('addresses', AddressController::class);
 
 
     Route::resource('dashboard', DashboardController::class);
+    Route::get('dashboard/orders/{order}', [DashboardController::class, 'orderShow'])->name('dashboard.order.show');
 
 
 });
 
 Route::post('/change-language', [LanguageController::class,'changeLanguage'])->name('change.language');
+Route::get('confirm-order/{order}',[OrderController::class,'confirmOrder'])->middleware(['signed', 'throttle:6,1'])->name('confirm_order');
 
 
 // Маршруты для корзины
 Route::get('/cart',                     [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add/{product}',      [CartController::class, 'addToCart'])->name('cart.add');
 Route::delete('/cart/remove/{cart}',    [CartController::class, 'removeFromCart'])->name('cart.remove');
+Route::post('/cart/addresses/add',    [CartController::class, 'storeNoAuth'])->name('cart.address.add');
 
 require __DIR__.'/auth.php';
 

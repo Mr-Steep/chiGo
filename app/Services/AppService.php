@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Address;
 use App\Models\Cart;
 use App\Models\Shipping;
 
@@ -10,6 +11,10 @@ class AppService
     public static function getCurrentCart()
     {
         return Cart::getCurrentCart();
+    }
+    public static function getAddresses()
+    {
+        return Address::getAddresses();
     }
     public static function getCurrentCartItems()
     {

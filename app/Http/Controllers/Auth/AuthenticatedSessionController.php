@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\Address;
 use App\Models\Cart;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
@@ -33,12 +34,20 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
 
+        //cart
         $cart = Cart::where('session_id', $oldSessionId)->first();
         if ($cart) {
             $cart->session_id  = session()->getId();
             $cart->user_id     = Auth::user()->getAuthIdentifier();
             $cart->save();
         }
+        //addresses
+        $addresses =  Address::where('session_id', $oldSessionId)->get();
+       foreach ($addresses as $address){
+           $address->session_id  = session()->getId();
+           $address->user_id     = Auth::user()->getAuthIdentifier();
+           $address->save();
+       }
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }

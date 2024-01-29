@@ -17,11 +17,14 @@ return new class extends Migration {
 
             $table->unsignedBigInteger('coupon_id')->nullable();
             $table->unsignedBigInteger('shipping_id')->nullable()->default(1);
+            $table->unsignedBigInteger('address_id')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('coupon_id')->references('id')->on('coupons')->onDelete('set null');
             $table->foreign('shipping_id')->references('id')->on('shippings')->onDelete('set null');
+            $table->foreign('address_id')->references('id')->on('addresses')->onDelete('set null');
+
         });
     }
 

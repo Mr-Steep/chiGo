@@ -6,34 +6,44 @@ namespace App\Http\Controllers;
 use App\Models\Address;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+
 class AddressController extends Controller
 {
     public function store(Request $request)
     {
-        $request->validate([
-            'country' => 'required',
-            'city' => 'required',
-            'street' => 'required',
-            'house' => 'required',
-            'floor' => 'required',
-            'flat' => 'required',
+
+        $validator = Validator::make($request->all(), [
+            'country'  => 'required',
+            'city'     => 'required',
+            'street'   => 'required',
+            'house'    => 'required',
+            'flat'     => 'required',
             'zip_code' => 'required',
         ]);
 
+        if ($validator->fails()) {
+
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput()
+                ->with('open-add', true);
+        }
+
         $address = new Address([
-            'country'  => $request->input('country'),
-            'city'     => $request->input('city'),
-            'street'   => $request->input('street'),
-            'house'    => $request->input('house'),
-            'floor'    => $request->input('floor'),
-            'flat'     => $request->input('flat'),
-            'zip_code' => $request->input('zip_code'),
-            'user_id'  => Auth::id(),
+            'country'     => $request->input('country'),
+            'city'        => $request->input('city'),
+            'street'      => $request->input('street'),
+            'house'       => $request->input('house'),
+            'flat'        => $request->input('flat'),
+            'zip_code'    => $request->input('zip_code'),
+            'user_id'     => Auth::id()
         ]);
 
         $address->save();
 
-        return redirect()->route('addresses.index')->with('success', 'Address created successfully.');
+        return redirect()->back()->with('success', 'Address created successfully.');
     }
 
     public function destroy(Address $address)
