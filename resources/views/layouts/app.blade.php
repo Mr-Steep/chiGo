@@ -75,12 +75,10 @@
 
 
                             <ul id="nm-footer-bar-menu" class="menu">
-                                <li id="menu-item-386" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-386"><a href="https://savoy.nordicmade.com/about/">About Us</a></li>
-                                <li id="menu-item-388" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-388"><a href="https://savoy.nordicmade.com/blog/">Blog</a></li>
-                                <li id="menu-item-384" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-384"><a href="https://savoy.nordicmade.com/faq/">FAQs</a></li>
-                                <li id="menu-item-387" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-387"><a href="https://savoy.nordicmade.com/order-tracking/">Order Tracking</a></li>
-                                <li id="menu-item-385" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-385"><a href="https://savoy.nordicmade.com/contact/">Contact</a></li>
-                                <li class="nm-menu-item-copyright menu-item"><span>© By <a href="https://1.envato.market/xaNrR">NordicMade</a></span></li>
+                                <li id="menu-item-386" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-386"><a href="{{route('about')}}">About Us</a></li>
+                                <li id="menu-item-384" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-384"><a href="{{route('faq')}}">FAQs</a></li>
+                                <li id="menu-item-387" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-387"><a href="{{route('tracking')}}/">Order Tracking</a></li>
+                                <li id="menu-item-385" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-385"><a href="{{route('contact')}}">Contact</a></li>
                             </ul>
 
                         </div>
@@ -631,23 +629,6 @@
 </div>
 
 
-
-
-
-
-{{--<script type="text/javascript" id="wp-util-js-extra">--}}
-{{--    /* <![CDATA[ */--}}
-{{--    var _wpUtilSettings = {"ajax": {"url": "\/wp-admin\/admin-ajax.php"}};--}}
-{{--    /* ]]> */--}}
-{{--</script>--}}
-
-
-{{--<script type="text/javascript"--}}
-{{--        src="https://savoy.nordicmade.com/wp-includes/js/dist/hooks.min.js?ver=c6aec9a8d4e5a5d543a1"--}}
-{{--        id="wp-hooks-js"></script>--}}
-{{--<script type="text/javascript"--}}
-{{--        src="https://savoy.nordicmade.com/wp-includes/js/dist/i18n.min.js?ver=7701b0c3857f914212ef"--}}
-{{--        id="wp-i18n-js"></script>--}}
 
 
 

@@ -60,6 +60,11 @@ Route::post('/cart/add/{product}',      [CartController::class, 'addToCart'])->n
 Route::delete('/cart/remove/{cart}',    [CartController::class, 'removeFromCart'])->name('cart.remove');
 Route::post('/cart/addresses/add',    [CartController::class, 'storeNoAuth'])->name('cart.address.add');
 
+Route::view('/about', 'about.index')->name('about');
+Route::view('/contact', 'contact.index')->name('contact');
+Route::view('/faq', 'faq.index')->name('faq');
+Route::view('/tracking', 'tracking.index')->name('tracking');
+
 require __DIR__.'/auth.php';
 
 
