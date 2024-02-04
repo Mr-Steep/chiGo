@@ -11,6 +11,10 @@
 <x-app-layout>
 
     <div class="nm-page-default nm-row">
+
+        <x-stepper/>
+
+
         <div class="nm-page-default-col col-xs-12">
             <div id="post-9" class="post-9 page type-page status-publish hentry">
                 <div class="woocommerce">

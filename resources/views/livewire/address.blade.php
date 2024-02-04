@@ -5,6 +5,10 @@
 
     <div class="flex justify-between">
         <p class="woocommerce-shipping-destination"><strong>Address:</strong></p>
+        @if ($errors->has('address'))
+                <p class="absolute mt-6 text-xs text-red-600">{{ $errors->first('address') }}</p>
+        @endif
+        @if (!$currentAddress)
             <button type="button" id="add-tab" wire:click="setActive(1)"
                     class="tab text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium text-sm px-5 py-2.5 text-center inline-flex items-center ">
                 Add Address
@@ -12,6 +16,8 @@
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
                 </svg>
             </button>
+
+        @endif
 
     </div>
 

@@ -18,11 +18,11 @@ class OrderController extends Controller
 
     function create(Request $request)
     {
+//        die();
         $cart     = AppService::getCurrentCart();
         if(!$cart->shipping_id || !$cart->address_id){
-            return redirect()->back()->with('no shipping_id or address_id');
+            return redirect()->back()->withErrors(['address' => 'The address field is required.']);
         }
-
         $newOrder = Order::createNewOrder($cart->shipping_id, $cart->address_id, AppService::getTotalCost($cart));
 
         $cart->cartItems->map(function ($cartProduct) use($newOrder){
@@ -52,10 +52,10 @@ class OrderController extends Controller
     function confirmOrder(Order $order)
     {
 
-        $order->status_id =  2;
+        $order->status_id =  3;
         $order->update();
 
-        return response()->json(['message' => 'ok']);
+        return redirect()->route('order.index', $order);
 
     }
 
