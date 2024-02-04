@@ -8,9 +8,12 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\WishlistController;
+use App\Livewire\Wishlist;
 use App\Models\Category;
 use App\Services\AppService;
 use Illuminate\Support\Facades\Route;
+use Livewire\Livewire;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +65,10 @@ Route::get('/cart',                     [CartController::class, 'index'])->name(
 Route::post('/cart/add/{product}',      [CartController::class, 'addToCart'])->name('cart.add');
 Route::delete('/cart/remove/{cart}',    [CartController::class, 'removeFromCart'])->name('cart.remove');
 Route::post('/cart/addresses/add',    [CartController::class, 'storeNoAuth'])->name('cart.address.add');
+
+
+Route::resource('wishlist', WishlistController::class);
+
 
 Route::view('/about', 'about.index')->name('about');
 Route::view('/contact', 'contact.index')->name('contact');

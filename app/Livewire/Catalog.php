@@ -13,7 +13,7 @@ class Catalog extends Component
     use WithPagination;
     protected $listeners = ['updateRangePrice' => 'setRangePrice'];
 
-    public $search;
+    public $search = '';
     public $sortBy;
     public $minPrice ;
     public $categoryId;

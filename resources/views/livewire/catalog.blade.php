@@ -5,17 +5,45 @@
                 <div class="nm-row">
                     <div class="col-xs-12">
                         <div id="nm-shop-filter-menu-wrap">
+                            </ul>
                             <ul id="nm-shop-filter-menu" class="nm-shop-filter-menu">
+                                <li class="nm-shop-categories-btn-wrap" data-panel="cat">
+                                    <a  class="invert-color">Categories</a>
+                                </li>
                                 <li class="nm-shop-filter-btn-wrap active" data-panel="filter">
-                                    <a onclick="$('#sorting-data').toggle()" class="invert-color">Sorting</a>
+                                    <a onclick="$('#filter-data').toggle()" class="invert-color">Filter</a>
+                                </li>
+                                <li class="nm-shop-search-btn-wrap" data-panel="search">
+                                    <span>⁄</span>
+                                    <a onclick="$('#search-data').toggle()" id="nm-shop-search-btn" class="invert-color">
+                                        <span>Search</span>
+{{--                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 stroke-1" viewBox="0 0 24 24" fill="none">--}}
+{{--                                                <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"></path>--}}
+{{--                                            </svg>--}}
+                                    </a>
                                 </li>
                             </ul>
                         </div>
+
                     </div>
                 </div>
             </div>
 
-            <div id="sorting-data" class="nm-shop-sidebar nm-shop-sidebar-header fade-in"
+            <div id="search-data"  style="display: {{$search?"block":"none"}};" class="fade-in">
+                <div class="nm-row">
+                    <div class="col-xs-12">
+                        <div class="nm-shop-search-inner">
+                            <div class="nm-shop-search-input-wrap">
+                                <a href="#" id="nm-shop-search-close"><i class="nm-font nm-font-close2"></i></a>
+                                    <input wire:model.live="search" class="focus:outline-none" type="text" id="nm-shop-search-input" autocomplete="off" value="" name="s" placeholder="Search products">
+                            </div>
+
+                            <div id="nm-shop-search-notice"><span>press <u>Enter</u> to search</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="filter-data" class="nm-shop-sidebar nm-shop-sidebar-header fade-in"
                  data-sidebar-layout="header" style="display: none;">
                 <div class="nm-shop-sidebar-inner">
                     <div class="nm-row">
@@ -145,6 +173,27 @@
 
                         <div class="nm-shop-results-bar  is-tag">
                             <ul>
+
+                                @if($search)
+                                    <li class="nm-shop-search-taxonomy-reset">
+
+                                        <a href="#" class="!flex !items-center" id="nm-shop-search-taxonomy-reset"
+                                           data-shop-url="https://savoy.nordicmade.com/">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 m-1"
+                                                 viewBox="-0.5 0 25 25">
+                                                <path d="M3 21.32L21 3.32001" stroke="grey" stroke-width="1.5"
+                                                      stroke-linecap="round" stroke-linejoin="round"></path>
+                                                <path d="M3 3.32001L21 21.32" stroke="grey" stroke-width="1.5"
+                                                      stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                            <div>
+                                                Search:<span>"{{$search}}”</span>
+                                            </div>
+
+                                        </a>
+                                    </li>
+                                @endif
+
                                 @if($categoryId)
                                     <li class="nm-shop-search-taxonomy-reset">
 

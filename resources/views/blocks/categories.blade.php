@@ -18,7 +18,7 @@
                         @foreach($categories as $category)
                             <li class="cat-item-23">
                                 <span class="nm-shop-categories-divider">⁄</span>
-                                <a href="#">
+                                <a href="{{route('catalog.index')}}">
                                     <img class="grayscale" src=" {{$category->image2}}" width="46" height="46" alt="">{{$category->name}}</a></li>
                         @endforeach
                     </ul>
