@@ -24,7 +24,7 @@
                             </li>
                             <li id="menu-item-3169"
                                 class="megamenu full col-5 mobile-thumbnail-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3169 bridge-height-set">
-                                <a href="/?header_category_menu=1">{{__('messages.categories')}}
+                                <a>{{__('messages.categories')}}
                                     <span class="label">New</span></a>
                                 <div class="sub-menu">
                                     <div class="nm-sub-menu-bridge" style="height: 2px;"></div>

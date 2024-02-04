@@ -8,6 +8,8 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LanguageController;
+use App\Models\Category;
+use App\Services\AppService;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,8 +25,9 @@ use Illuminate\Support\Facades\Route;
 Route::resource('products', ProductController::class);
 
 Route::get('/', function () {
-    $products = \App\Models\Product::inRandomOrder()->limit(30)->get();
-    return view('index', compact('products'));
+    $products   = \App\Models\Product::inRandomOrder()->limit(30)->get();
+    $categories = AppService::buildCategoryTree(Category::all());
+    return view('index', compact('products', 'categories'));
 })->name('home');
 
 

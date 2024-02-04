@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('image')->default('');
+            $table->string('image2')->default('');
             $table->timestamps();
 
             $table->nestedSet();
