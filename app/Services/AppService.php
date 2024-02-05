@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\Address;
 use App\Models\Cart;
 use App\Models\Shipping;
+use App\Models\Wishlist;
 
 class AppService
 {
@@ -76,7 +77,7 @@ class AppService
 
     public static function refresh($instance)
     {
-        $events = ['refreshCard', 'refreshCartSide', 'refreshNavigation', 'refreshProductShow'];
+        $events = ['refreshCard', 'refreshCartSide', 'refreshNavigation', 'refreshWishlist', 'refreshProductShow'];
 
         foreach ($events as $event) {
             $instance->dispatch($event);
@@ -93,6 +94,28 @@ class AppService
         $discount = 0;
         $costShipping = $cart->shipping->shipping_cost;
         return $costShipping + AppService::getCurrentCartCostProducts() - $discount;
+    }
+
+    public static function getWishList(){
+
+       return Wishlist::getWishList();
+    }
+
+    public static function quantityWishList(){
+
+        return self::getWishList()->count();
+    }
+
+    public static function toggleWishList($productId){
+        $wishlistItem = Wishlist::getItemWishList();
+
+        $productInWishList = $wishlistItem->where('product_id', $productId)->first();
+        if($productInWishList){
+            Wishlist::remove($productInWishList->id);
+        }else{
+            Wishlist::add($productId);
+        }
+
     }
 
 }

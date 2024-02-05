@@ -50,6 +50,11 @@ class Catalog extends Component
         $this->render();
     }
 
+    public function toggleWishlist($productId)
+    {
+        AppService::toggleWishList($productId);
+        AppService::refresh($this);
+    }
     public function render()
     {
         $appService = app(AppService::class);

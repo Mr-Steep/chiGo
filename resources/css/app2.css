@@ -12233,14 +12233,14 @@ form.woocommerce-checkout>.nm-shop-notice {
     display: inline-block;
     font-size: 16px;
     line-height: 17px;
-    color: inherit;
+    /*color: inherit;*/
     width: 19px;
     height: 17px
 }
 
 .nm-wishlist-button {
     position: relative;
-    color: inherit;
+    /*color: inherit;*/
     overflow: hidden
 }
 
@@ -12931,13 +12931,7 @@ form.woocommerce-checkout>.nm-shop-notice {
     content: "\f077"
 }
 
-.nm-font-chevron-down-bold:before {
-    content: "\f078"
-}
 
-.nm-font-heart-o:before {
-    content: "\f08a"
-}
 
 .nm-font-twitter:before {
     content: "\f099"

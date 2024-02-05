@@ -120,6 +120,11 @@
                             </li>
                             <li class="nm-menu-wishlist menu-item-default has-icon" aria-label="Wishlist">
                                 <a href="/wishlist/">
+                                    @if($quantityWishList)
+                                     <span class="!absolute count !top-2 !left-9 text-sm">
+                                                        {{ $quantityWishList}}
+                                     </span>
+                                    @endif
                                     <svg class=" w-6 h-6 stroke-1" xmlns="http://www.w3.org/2000/svg" fill="#000000"
                                          viewBox="0 0 24 24">
                                         <path

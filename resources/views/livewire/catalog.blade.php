@@ -295,10 +295,10 @@
                                         </div>
 
                                         <div class="nm-shop-loop-details">
-                                            <a href="#"
-                                               class="nm-wishlist-button nm-wishlist-item-217-button"
+                                            <a wire:click="toggleWishlist({{$product->id}})"
+                                               class="nm-wishlist-button nm-wishlist-item-217-button {{$product->isInWishlist()? "text-yellow-500": "text-slate-300"}} hover:text-slate-400 hover:cursor-pointer"
                                                title="Add to Wishlist">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="lightgray"
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
                                                      viewBox="0 0 24 24" class="w-5 h-5">
                                                     <path
                                                         d="M20.808,11.079C19.829,16.132,12,20.5,12,20.5s-7.829-4.368-8.808-9.421C2.227,6.1,5.066,3.5,8,3.5a4.444,4.444,0,0,1,4,2,4.444,4.444,0,0,1,4-2C18.934,3.5,21.773,6.1,20.808,11.079Z"/>

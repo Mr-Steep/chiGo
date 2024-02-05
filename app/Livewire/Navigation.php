@@ -12,11 +12,13 @@ class Navigation extends Component
     protected $listeners = ['refreshNavigation' => 'refresh'];
 
     public int $quantityProducts;
+    public int $quantityWishList;
     public $categoriesTree;
 
     public function mount()
     {
         $this->quantityProducts = AppService::quantityProducts();
+        $this->quantityWishList = AppService::quantityWishList();
 
         $categories    = Category::all();
         $this->categoriesTree = AppService::buildCategoryTree($categories);
