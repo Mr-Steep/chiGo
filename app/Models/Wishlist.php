@@ -41,8 +41,7 @@ class Wishlist extends Model
         if ($user_id) {
             $query->orWhere('user_id', $user_id);
         }
-
-        return $query;
+        return $query->first();
     }
 
     public static function add($product_id): Wishlist

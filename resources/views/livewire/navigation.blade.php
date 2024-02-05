@@ -50,8 +50,7 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li id="menu-item-271"
-                                class="megamenu col-3 menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor menu-item-has-children menu-item-271 bridge-height-set">
+                            <li class="megamenu col-3 menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor menu-item-has-children menu-item-271 bridge-height-set">
                                 <a href="{{route('catalog.index')}}">{{__('messages.catalog')}}</a>
                                 <div class="sub-menu">
                                     <div class="nm-sub-menu-bridge"></div>
@@ -88,10 +87,9 @@
 
                 <div class="nm-right-menu-wrap col-xs-6">
                     <nav class="nm-right-menu">
-                        <ul id="nm-right-menu-ul" class="nm-menu">
+                        <ul id="nm-right-menu-ul" class="nm-menu !text-gray-800">
 
                             <li>
-
                                 <form id="changeLanguageForm" action="{{ route('change.language') }}" method="post">
                                     @method('post')
                                     @csrf
@@ -109,27 +107,122 @@
 
 
                             <li class="nm-menu-search menu-item-default has-icon">
-                                <a href="#" id="nm-menu-search-btn" aria-label="Search">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-1" viewBox="0 0 24 24"
+                                <a wire:click="toggleTopSearch" id="nm-menu-search-btn" aria-label="Search">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-[1.2]" viewBox="0 0 24 24"
                                          fill="none">
                                         <path
                                             d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
-                                            stroke="#000000" stroke-linecap="round" stroke-linejoin="round"/>
+                                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </a>
+
+
+
+                                <div>
+                                    <!-- drawer component -->
+                                    <div id="drawer-top-search"
+                                         class="fixed  {{$hiddenTopSearch?"hidden":""}} top-0 left-0 right-0 z-50 w-full p-4 transition-transform bg-white dark:bg-gray-800 transform-none"
+                                         tabindex="-1" aria-labelledby="drawer-top-label" aria-modal="true"
+                                         role="dialog">
+
+                                        <div class="col-xs-12">
+                                            <div class="flex items-center text-gray-500">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-[1.2]"
+                                                     viewBox="0 0 24 24" fill="none">
+                                                    <path
+                                                        d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
+                                                        stroke="currentColor" stroke-linecap="round"
+                                                        stroke-linejoin="round"></path>
+                                                </svg>
+                                                <style>
+                                                    input:focus {
+                                                        outline: none !important;
+                                                        /*border-color: transparent !important;*/
+                                                        box-shadow: none !important;
+                                                    }
+                                                </style>
+                                                <input type="text" wire:model.live="topSearch" autocomplete="off"
+                                                       class="w-full !border-t-0 !border-x-0 !border-b-1  !focus:outline-none !focus:border-transparent "
+                                                       placeholder="Search products">
+
+                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                     wire:click="toggleTopSearch"
+                                                     class="w-6 h-6 stroke-[1.2]"
+                                                     viewBox="-0.5 0 25 25">
+                                                    <path d="M3 21.32L21 3.32001" stroke="currentColor"
+                                                          stroke-linecap="round" stroke-linejoin="round"></path>
+                                                    <path d="M3 3.32001L21 21.32" stroke="currentColor"
+                                                          stroke-linecap="round" stroke-linejoin="round"></path>
+                                                </svg>
+                                            </div>
+                                            <div id="nm-search-suggestions" class="show">
+
+                                                @if($topSearch)
+                                                    <div class="nm-search-suggestions-inner">
+                                                        <div id="nm-search-suggestions-notice" class="show press-enter">
+                                                            <span
+                                                                class="txt-press-enter">press <u>Enter</u> to search</span>
+                                                            <span class="txt-has-results">Showing all results:</span>
+                                                            <span class="txt-no-results">No products found.</span>
+                                                        </div>
+                                                        <ul id="nm-search-suggestions-product-list"
+                                                            class="block-grid-single-row xsmall-block-grid-1 small-block-grid-1 medium-block-grid-5 large-block-grid-6">
+                                                            @foreach($topSearchProduct as  $product)
+                                                                <li>
+                                                                    <a href="{{route('products.show', $product)}}">
+                                                                        <img src="{{$product->image}}"
+                                                                             width="350" height="434">
+                                                                        <h3>{{$product->name}}</h3>
+                                                                        <span class="price">
+                                                                    <span class="woocommerce-Price-amount amount">
+                                                                        <bdi>
+                                                                            <span
+                                                                                class="woocommerce-Price-currencySymbol">$</span>
+                                                                            {{$product->price}}
+                                                                        </bdi>
+                                                                    </span>
+                                                                </span>
+                                                                    </a>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                @else
+
+                                                    <div class="nm-search-suggestions-inner">
+                                                        <div id="nm-search-suggestions-notice" class="show no-results">
+                                                            <span
+                                                                class="txt-press-enter">press <u>Enter</u> to search</span>
+                                                            <span class="txt-has-results">Showing all results:</span>
+                                                            <span class="txt-no-results">No products found.</span>
+                                                        </div>
+                                                        <ul id="nm-search-suggestions-product-list"
+                                                            class="block-grid-single-row xsmall-block-grid-1 small-block-grid-1 medium-block-grid-5 large-block-grid-6"></ul>
+                                                    </div>
+                                                @endif
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
                             </li>
                             <li class="nm-menu-wishlist menu-item-default has-icon" aria-label="Wishlist">
-                                <a href="/wishlist/">
+                                <a href="{{route('wishlist.index')}}">
                                     @if($quantityWishList)
-                                     <span class="!absolute count !top-2 !left-9 text-sm">
+                                     <span class="!absolute count !top-2 !left-9 text-sm text-amber-500">
                                                         {{ $quantityWishList}}
                                      </span>
+
                                     @endif
-                                    <svg class=" w-6 h-6 stroke-1" xmlns="http://www.w3.org/2000/svg" fill="#000000"
-                                         viewBox="0 0 24 24">
-                                        <path
-                                            d="M20.5,4.609A5.811,5.811,0,0,0,16,2.5a5.75,5.75,0,0,0-4,1.455A5.75,5.75,0,0,0,8,2.5,5.811,5.811,0,0,0,3.5,4.609c-.953,1.156-1.95,3.249-1.289,6.66,1.055,5.447,8.966,9.917,9.3,10.1a1,1,0,0,0,.974,0c.336-.187,8.247-4.657,9.3-10.1C22.45,7.858,21.453,5.765,20.5,4.609Zm-.674,6.28C19.08,14.74,13.658,18.322,12,19.34c-2.336-1.41-7.142-4.95-7.821-8.451-.513-2.646.189-4.183.869-5.007A3.819,3.819,0,0,1,8,4.5a3.493,3.493,0,0,1,3.115,1.469,1.005,1.005,0,0,0,1.76.011A3.489,3.489,0,0,1,16,4.5a3.819,3.819,0,0,1,2.959,1.382C19.637,6.706,20.339,8.243,19.826,10.889Z"
-                                        />
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 stroke-[1.2]" viewBox="0 0 24 24" fill="none">
+                                        <path d="M12.62 20.81C12.28 20.93 11.72 20.93 11.38 20.81C8.48 19.82 2 15.69 2 8.68998C2 5.59998 4.49 3.09998 7.56 3.09998C9.38 3.09998 10.99 3.97998 12 5.33998C13.01 3.97998 14.63 3.09998 16.44 3.09998C19.51 3.09998 22 5.59998 22 8.68998C22 15.69 15.52 19.82 12.62 20.81Z"
+                                              stroke="currentColor"  stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
                                 </a>
                             </li>
@@ -139,11 +232,11 @@
                                 <a>
                                     <svg id="dropdownInformationButton"
                                          onclick="$('#dropdownInformation').toggle()"
-                                         data-dropdown-toggle="dropdownInformation" class="nm-myaccount-icon nm-font nm-font-head w-6 h-6"
+                                         data-dropdown-toggle="dropdownInformation" class="nm-myaccount-icon nm-font nm-font-head w-6 h-6 stroke-[1.2]"
                                          xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
                                         <path
                                             d="M5 21C5 17.134 8.13401 14 12 14C15.866 14 19 17.134 19 21M16 7C16 9.20914 14.2091 11 12 11C9.79086 11 8 9.20914 8 7C8 4.79086 9.79086 3 12 3C14.2091 3 16 4.79086 16 7Z"
-                                            stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+                                            stroke="currentColor"  stroke-linecap="round"
                                             stroke-linejoin="round"/>
                                     </svg>
                                 </a>
@@ -203,24 +296,24 @@
                             </li>
                             <li class="nm-menu-cart menu-item-default has-icon">
                                 <a href="#" id="nm-menu-cart-btn">
-                                                <span class="!absolute count !top-2 !left-8 ">
+                                                <span class="!absolute count !top-2 !left-9 text-sm !text-amber-500">
                                                         {{$quantityProducts}}
                                                 </span>
-                                    <svg class="w-6 h-6 nm-menu-cart-icon nm-font nm-font-cart"
+                                    <svg class="w-6 h-6 nm-menu-cart-icon nm-font nm-font-cart stroke-[1.2]"
                                          xmlns="http://www.w3.org/2000/svg"
                                          viewBox="0 0 24 24" fill="none">
                                         <path
                                             d="M2 3L2.26491 3.0883C3.58495 3.52832 4.24497 3.74832 4.62248 4.2721C5 4.79587 5 5.49159 5 6.88304V9.5C5 12.3284 5 13.7426 5.87868 14.6213C6.75736 15.5 8.17157 15.5 11 15.5H19"
-                                            stroke="#1C274C" stroke-width="1.5" stroke-linecap="round"/>
+                                            stroke="currentColor" stroke-linecap="round"/>
                                         <path
                                             d="M7.5 18C8.32843 18 9 18.6716 9 19.5C9 20.3284 8.32843 21 7.5 21C6.67157 21 6 20.3284 6 19.5C6 18.6716 6.67157 18 7.5 18Z"
-                                            stroke="#1C274C" stroke-width="1.5"/>
+                                            stroke="currentColor"/>
                                         <path
                                             d="M16.5 18.0001C17.3284 18.0001 18 18.6716 18 19.5001C18 20.3285 17.3284 21.0001 16.5 21.0001C15.6716 21.0001 15 20.3285 15 19.5001C15 18.6716 15.6716 18.0001 16.5 18.0001Z"
-                                            stroke="#1C274C" stroke-width="1.5"/>
+                                            stroke="currentColor" />
                                         <path
                                             d="M5 6H16.4504C18.5054 6 19.5328 6 19.9775 6.67426C20.4221 7.34853 20.0173 8.29294 19.2078 10.1818L18.7792 11.1818C18.4013 12.0636 18.2123 12.5045 17.8366 12.7523C17.4609 13 16.9812 13 16.0218 13H5"
-                                            stroke="#1C274C" stroke-width="1.5"/>
+                                            stroke="currentColor" />
                                     </svg>
                                 </a>
                             </li>

@@ -28,9 +28,8 @@ use Livewire\Livewire;
 Route::resource('products', ProductController::class);
 
 Route::get('/', function () {
-    $products   = \App\Models\Product::inRandomOrder()->limit(30)->get();
     $categories = AppService::buildCategoryTree(Category::all());
-    return view('index', compact('products', 'categories'));
+    return view('index', compact('categories'));
 })->name('home');
 
 

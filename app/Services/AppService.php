@@ -77,7 +77,7 @@ class AppService
 
     public static function refresh($instance)
     {
-        $events = ['refreshCard', 'refreshCartSide', 'refreshNavigation', 'refreshWishlist', 'refreshProductShow'];
+        $events = ['refreshCard', 'refreshCartSide', 'refreshNavigation', 'refreshWishlist', 'refreshProductShow', 'refreshTop100'];
 
         foreach ($events as $event) {
             $instance->dispatch($event);
@@ -108,7 +108,6 @@ class AppService
 
     public static function toggleWishList($productId){
         $wishlistItem = Wishlist::getItemWishList();
-
         $productInWishList = $wishlistItem->where('product_id', $productId)->first();
         if($productInWishList){
             Wishlist::remove($productInWishList->id);
