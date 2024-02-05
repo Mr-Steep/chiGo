@@ -107,8 +107,11 @@ class AppService
     }
 
     public static function toggleWishList($productId){
-        $wishlistItem = Wishlist::getItemWishList();
-        $productInWishList = $wishlistItem->where('product_id', $productId)->first();
+        $productInWishList = null;
+        $wishlistItem      = Wishlist::getItemWishList();
+        if($wishlistItem){
+            $productInWishList = $wishlistItem->where('product_id', $productId)->first();
+        }
         if($productInWishList){
             Wishlist::remove($productInWishList->id);
         }else{
