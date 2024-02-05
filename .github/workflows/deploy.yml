@@ -36,7 +36,7 @@ jobs:
         key: ${{ secrets.DIGITALOCEAN_SSH_KEY }}
         port: ${{ secrets.DIGITALOCEAN_SSH_PORT }}
         script: |
-          cd /var/www/html
+          cd /var/www/chiGo
           php artisan down
           git pull origin master
           composer install --no-ansi --no-interaction --no-progress --optimize-autoloader
