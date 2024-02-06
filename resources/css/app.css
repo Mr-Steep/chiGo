@@ -3,6 +3,11 @@
 @tailwind utilities;
 
 
+.no-border{
+    outline: none !important;
+    box-shadow: none !important;
+}
+
 body {
     font-family: 'MaisonNeue', sans-serif;
 }

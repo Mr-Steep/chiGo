@@ -82,7 +82,14 @@
                     @else
 
                         <li class="empty !block">
-                            <i class="nm-font nm-font-close2"></i>
+                            <i class="nm-font nm-font-close2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-13 h-13" viewBox="-0.5 0 25 25">
+                                    <path d="M3 21.32L21 3.32001" stroke="white" stroke-width="1"
+                                          stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M3 3.32001L21 21.32" stroke="white" stroke-width="1"
+                                          stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </i>
                             <span>No products in the cart.</span>
                         </li>
                     @endif

@@ -43,7 +43,7 @@ class CategorySeeder extends Seeder
         $technic = Category::create([
             'name' => 'Техника',
             'image' => 'https://savoy.nordicmade.com/wp-content/uploads/2020/08/category-thumb-essentials.jpg',
-            'image2' => 'https://savoy.nordicmade.com/wp-content/uploads/2020/12/category-icon-decoration.jpg',
+            'image2' => 'https://savoy.nordicmade.com/wp-content/uploads/2020/12/category-icon-essentials.jpg',
             'slug' => Str::slug('Техника'),
         ]);
 
@@ -54,7 +54,7 @@ class CategorySeeder extends Seeder
         $decor = Category::create([
             'name' => 'Декор',
             'image' => 'https://savoy.nordicmade.com/wp-content/uploads/2020/08/category-thumb-decoration.jpg',
-            'image2' => 'https://savoy.nordicmade.com/wp-content/uploads/2020/12/category-icon-essentials.jpg',
+            'image2' => 'https://savoy.nordicmade.com/wp-content/uploads/2020/12/category-icon-decoration.jpg',
             'slug' => Str::slug('Декор'),
         ]);
 

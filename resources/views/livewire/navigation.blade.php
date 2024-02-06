@@ -134,15 +134,15 @@
                                                         stroke="currentColor" stroke-linecap="round"
                                                         stroke-linejoin="round"></path>
                                                 </svg>
-                                                <style>
-                                                    input:focus {
-                                                        outline: none !important;
-                                                        /*border-color: transparent !important;*/
-                                                        box-shadow: none !important;
-                                                    }
-                                                </style>
+{{--                                                <style>--}}
+{{--                                                    input:focus {--}}
+{{--                                                        outline: none !important;--}}
+{{--                                                        /*border-color: transparent !important;*/--}}
+{{--                                                        box-shadow: none !important;--}}
+{{--                                                    }--}}
+{{--                                                </style>--}}
                                                 <input type="text" wire:model.live="topSearch" autocomplete="off"
-                                                       class="w-full !border-t-0 !border-x-0 !border-b-1  !focus:outline-none !focus:border-transparent "
+                                                       class="no-border w-full !border-t-0 !border-x-0 !border-b-1  !focus:outline-none !focus:border-transparent "
                                                        placeholder="Search products">
 
                                                 <svg xmlns="http://www.w3.org/2000/svg"

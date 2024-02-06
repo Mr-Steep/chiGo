@@ -1,6 +1,6 @@
 <div class="nm-page-default nm-row">
     <div class="nm-page-default-col col-xs-12">
-        <div id="post-8" class="post-8 page type-page status-publish hentry">
+        <div class=" page type-page status-publish hentry">
             <div class="woocommerce">
                 @if(count($cartProducts))
 
@@ -141,7 +141,7 @@
                             </div>
 
 
-                            <div class="nm-coupon px-4">
+                            <div class="nm-coupon px-4 !transition-all !duration-300 !ease-in-out	">
                                 <input type="text" id="nm-coupon-code" class="input-text" name="nm_coupon_code" value=""
                                        placeholder="Coupon code">
 
@@ -249,39 +249,26 @@
 
                     </div>
                 @else
-                    <div class="nm-cart-empty">
+                    <div class="nm-page-default-col col-xs-12">
+                        <div id="post-21" class="entry-content post-21 page type-page status-publish hentry">
 
-
-                        <p class="icon">
-                            <i class="nm-font nm-font-close2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" viewBox="-0.5 0 25 25">
-                                    <path d="M3 21.32L21 3.32001" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    <path d="M3 3.32001L21 21.32" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                </svg>
-                            </i>
-                        </p>
-
-                        <div class="woocommerce-notices-wrapper"></div>
-                        <div id="nm-preview-cart-notice">
-                            <div class="nm-preview-cart-notice-inner">
-                                <i class="nm-font nm-font-info-outline"></i>
-                                <strong>Preview:</strong> Cart always empty? Try closing the ThemeForest iFrame by clicking the link below:
-                                <a href="https://savoy.nordicmade.com/" class="iframe-close" title="Close ThemeForest preview iFrame"><u>Close iFrame</u></a>
-                                <a class="close nm-font nm-font-close2" title="Hide notice">
-
-                                </a>
-                            </div>
-                        </div><div class="wc-empty-cart-message">
-                            <div class="nm-shop-notice woocommerce-info">
-                                <span>Your cart is currently empty.</span>
+                            <div id="nm-wishlist-empty" class="show">
+                                <div class="nm-row">
+                                    <div class="col-xs-12 flex flex-col justify-center	">
+                                        <p class="icon">
+                                            <i class="nm-font nm-font-close2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-13 h-13" viewBox="-0.5 0 25 25">
+                                                    <path d="M3 21.32L21 3.32001" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                    <path d="M3 3.32001L21 21.32" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                </svg>
+                                            </i>
+                                        </p>
+                                        <h1>Your cart is currently empty.</h1>
+                                        <p class="py-4"><a href="{{route('catalog.index')}}" class="button">Return to Shop</a></p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <p class="return-to-shop">
-                            <a class="button wc-backward" href="{{route('catalog.index')}}">
-                                Return to shop
-                            </a>
-                        </p>
-
                     </div>
                 @endif
             </div>

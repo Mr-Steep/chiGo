@@ -426,7 +426,7 @@
                                 @method('post')
                                 @csrf
                                 <select name="locale" id="localeSelector"
-                                        class="w-24 border-0 p-4 !focus:border-0 !outline-none !focus:outline-none"
+                                        class="no-border w-24 border-0 p-4 !focus:border-0 !outline-none !focus:outline-none"
                                         onchange="document.getElementById('changeLanguageForm').submit()">
                                     <option value="en" {{ session('locale') == 'en' ? 'selected' : '' }}>English
                                     </option>
