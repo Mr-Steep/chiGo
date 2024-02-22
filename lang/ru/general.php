@@ -18,4 +18,11 @@ return [
     'categories'    => 'Категории',
     'catalog'       => 'Каталог',
 
+
+
+    'odezda'    => 'Одежда',
+    'texnika'   => 'Техника',
+    'dekor'     => 'Декор',
+    'dom-i-sad' => 'Дом и Сад'
+
 ];

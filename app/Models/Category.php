@@ -9,10 +9,13 @@ class Category extends Model
 {
     use NodeTrait;
 
+    protected $fillable = ['name', 'slug', 'image', 'image2'];
+
     public function parent()
     {
         return $this->belongsTo(Category::class, 'parent_id');
     }
+
     public function children()
     {
         return $this->hasMany(Category::class, 'parent_id');

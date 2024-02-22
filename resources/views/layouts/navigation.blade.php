@@ -15,22 +15,22 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
-                        {{ __('messages.Home') }}
+                        {{ __('general.Home') }}
                     </x-nav-link>
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('messages.Dashboard') }}
+                        {{ __('general.Dashboard') }}
                     </x-nav-link>
 
                     <x-store-navigation align="right" width="48">
                         <x-slot name="trigger">
-                            {{ __('messages.Categories') }}
+                            {{ __('general.Categories') }}
                         </x-slot>
                     </x-store-navigation>
 
                     <x-nav-link>
                     <div class="flex justify-center items-center">
                         <a href="{{route('catalog.index')}}" type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800">
-                            {{ __('messages.Catalog') }}
+                            {{ __('general.Catalog') }}
                         </a>
                     </div>
 
@@ -193,7 +193,7 @@
         <div class="nm-row">
             <div class="nm-header-logo">
                 <a href="https://savoy.nordicmade.com/">
-                    <h2 class="font-serif">ChiGo</h2>
+                    <h2 class="font-serif">ChinaPrime</h2>
                                                     <img src="https://savoy.nordicmade.com/wp-content/themes/savoy/assets/img/logo@2x.png" class="nm-logo" width="232" height="33" alt="Savoy">
                                                     <img src="https://savoy.nordicmade.com/wp-content/themes/savoy/assets/img/logo-light@2x.png" class="nm-alt-logo" width="232" height="33" alt="Savoy">
                 </a>
@@ -266,7 +266,7 @@
                         </li>
                         <li id="menu-item-271"
                             class="megamenu col-3 menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor menu-item-has-children menu-item-271 bridge-height-set">
-                            <a href="{{route('catalog.index')}}">{{__('messages.catalog')}}</a>
+                            <a href="{{route('catalog.index')}}">{{__('general.catalog')}}</a>
                             <div class="sub-menu">
                                 <div class="nm-sub-menu-bridge" style="height: 2px;"></div>
                                 <ul class="nm-sub-menu-ul">

@@ -207,7 +207,7 @@
                                                       stroke-linecap="round" stroke-linejoin="round"></path>
                                             </svg>
                                             <div>
-                                                Categories <span>"{{__("messages.$categoryId")}}”</span>
+                                                Categories <span>"{{__("general.$categoryId")}}”</span>
                                             </div>
 
                                         </a>
@@ -227,7 +227,7 @@
                                                       stroke-linecap="round" stroke-linejoin="round"></path>
                                             </svg>
                                             <div>
-                                                Sort By <span>"{{__("messages.$sortBy")}}”</span>
+                                                Sort By <span>"{{__("general.$sortBy")}}”</span>
                                             </div>
 
                                         </a>

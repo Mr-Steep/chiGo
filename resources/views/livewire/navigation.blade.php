@@ -4,7 +4,7 @@
             <div class="nm-row">
                 <div class="nm-header-logo">
                     <a href="/">
-                        <h2 class="font-serif">ChiGo</h2>
+                        <h2 class="font-serif">ChinaPrime</h2>
                </a>
                 </div>
                 <div class="nm-main-menu-wrap col-xs-6">
@@ -20,11 +20,11 @@
                             </li>
                             <li id="menu-item-20"
                                 class="megamenu col-2 shop-link menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-ancestor current_page_ancestor menu-item-has-children current-menu-item current_page_item menu-item-20 bridge-height-set">
-                                <a href="/" aria-current="page">Home</a>
+                                <a href="/" aria-current="page">   <a>{{__('general.home')}}</a>
                             </li>
                             <li id="menu-item-3169"
                                 class="megamenu full col-5 mobile-thumbnail-menu menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-3169 bridge-height-set">
-                                <a>{{__('messages.categories')}}
+                                <a>{{__('general.categories')}}
                                     <span class="label">New</span></a>
                                 <div class="sub-menu">
                                     <div class="nm-sub-menu-bridge" style="height: 2px;"></div>
@@ -40,18 +40,21 @@
                                         @foreach($categoriesTree as $category)
                                             <li id="menu-item-3170"
                                                 class="shop-ajax-link shop-redirect-link menu-item menu-item-type-taxonomy menu-item-object-product_cat nm-menu-item-has-image menu-item-3170">
-                                                <a href="#"><img
-                                                        src="{{$category->image}}"
+                                                <a href="#">
+                                                    <img src="{{$category->image}}"
                                                         loading="eager" alt="" width="160" height="160"
-                                                        class="nm-menu-item-image"><span
-                                                        class="nm-menu-item-image-title">{{$category->name}}</span></a>
+                                                        class="nm-menu-item-image">
+                                                    <span class="nm-menu-item-image-title">
+                                                        {{__("general.$category->slug")}}
+                                                    </span>
+                                                </a>
                                             </li>
                                         @endforeach
                                     </ul>
                                 </div>
                             </li>
                             <li class="megamenu col-3 menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor menu-item-has-children menu-item-271 bridge-height-set">
-                                <a href="{{route('catalog.index')}}">{{__('messages.catalog')}}</a>
+                                <a href="{{route('catalog.index')}}">{{__('general.catalog')}}</a>
                                 <div class="sub-menu">
                                     <div class="nm-sub-menu-bridge"></div>
                                     <ul class="nm-sub-menu-ul !flex !flex-row">
